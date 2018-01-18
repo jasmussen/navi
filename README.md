@@ -1,3 +1,5 @@
-# Navi theme
+# Navi WordPress theme
 
-As barebones as possible.
+This is a minimalist and work-in-progress WordPress theme that's optimized for Gutenberg.
+
+Theme is GPLV2.
