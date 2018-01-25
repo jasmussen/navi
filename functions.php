@@ -5,6 +5,9 @@ if ( ! function_exists( 'navitheme_setup' ) ) :
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
+
+		add_image_size( 'custom-thumbnails', 600, 300 );
+
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'navitheme' ),
 		) );

@@ -27,7 +27,7 @@ body {
 
 body {
   font: 12.5pt/1.8 "Noto Serif", serif;
-  color: #222;
+  color: #191e23;
   min-width: 320px;
   padding-bottom: 56px; }
 
@@ -59,11 +59,8 @@ svg {
 .screen-reader-text {
   display: none; }
 
-.posted-on .updated {
+.posted-on .published + .updated {
   display: none; }
-
-.entry-meta {
-  padding: 0 20px; }
 
 a {
   color: #009fd4; }
@@ -86,7 +83,7 @@ header.site-header {
   top: 0;
   right: 0;
   height: 56px;
-  background: #f7f7f7;
+  background: #f8f9f9;
   font-size: 12px;
   display: flex;
   flex-direction: row;
@@ -100,7 +97,7 @@ header.site-header {
     width: 100%;
     justify-content: left;
     align-items: center;
-    color: #999;
+    color: #555d66;
     text-align: center;
     text-decoration: none; }
   header.site-header ul li.active a,
@@ -154,6 +151,74 @@ header.site-header {
     max-width: 720px;
     margin-left: auto;
     margin-right: auto; }
+
+/**
+ * Entry Meta
+ */
+.entry-meta {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  padding: 0 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  font-size: 12px;
+  color: #555d66;
+  margin-bottom: 56px; }
+
+.entry-meta a {
+  color: #555d66;
+  text-decoration: none; }
+
+.entry-meta a:hover {
+  text-decoration: underline; }
+
+/**
+ * Form widgets
+ */
+button,
+input[type="submit"] {
+  background-color: #32373c;
+  border: none;
+  border-radius: 23px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  height: 46px;
+  line-height: 46px;
+  margin: 0;
+  padding: 0 24px;
+  white-space: nowrap;
+  font-family: "Noto Serif", serif; }
+
+input[type="text"],
+textarea {
+  border: 1px solid #e2e4e7;
+  padding: 1em;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif; }
+  input[type="text"]:focus,
+  textarea:focus {
+    border: 1px solid #555d66;
+    outline: none; }
+
+label {
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  color: #a2aab2; }
+
+/**
+ * Scrollbars
+ */
+body ::-webkit-scrollbar {
+  width: 12px;
+  height: 12px; }
+
+body ::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #a2aab2;
+  border: 3px solid transparent;
+  background-clip: padding-box; }
+  body ::-webkit-scrollbar-thumb:hover {
+    background-color: #8f98a1; }
 
 /**
  * Alignments
@@ -246,7 +311,7 @@ hr.wp-block-separator {
 .site-content article.page > blockquote.wp-block-quote,
 .site-content article.post > blockquote.wp-block-quote {
   /* increase specificity */
-  border-left: 4px solid #222;
+  border-left: 4px solid #191e23;
   font-size: 15pt;
   padding: 0 2em;
   font-style: italic;
@@ -291,10 +356,40 @@ hr.wp-block-separator {
 /**
  * Comments
  */
-.comment-form-comment label {
-  display: block; }
-.comment-form-comment textarea {
-  width: 100%; }
+.comments-area .logged-in-as {
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  color: #555d66; }
+  .comments-area .logged-in-as a {
+    color: #555d66; }
+.comments-area .comment-form-comment {
+  margin: 1em 0; }
+  .comments-area .comment-form-comment label {
+    display: block; }
+  .comments-area .comment-form-comment textarea {
+    width: 100%; }
+
+/**
+ * Post Navigation
+ */
+.navigation {
+  margin-bottom: 56px;
+  overflow: hidden; }
+  .navigation h4 {
+    margin-bottom: 56px;
+    position: relative; }
+  .navigation span.sep {
+    display: none; }
+  .navigation strong + span + strong {
+    position: absolute;
+    left: calc( 50% + 28px ); }
+  .navigation .thumbnails {
+    column-count: 2;
+    column-gap: 0;
+    margin: -28px; }
+    .navigation .thumbnails .nav-previous,
+    .navigation .thumbnails .nav-next {
+      height: 180px; }
 
 /**
  * Home Page
@@ -318,8 +413,10 @@ body.home .widget p {
 @media only screen and (min-width: 1440px) {
   .posts {
     column-count: 3; } }
-.posts article.post {
-  background: #f7f7f7;
+.thumbnails article.post,
+.thumbnails .nav-previous,
+.thumbnails .nav-next {
+  background: #f8f9f9;
   margin: 0 28px 56px 28px;
   padding: 0;
   position: relative;
@@ -328,13 +425,21 @@ body.home .widget p {
   box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
   transition: all .1s linear;
   break-inside: avoid; }
-  .posts article.post:before {
+  .thumbnails article.post:before,
+  .thumbnails .nav-previous:before,
+  .thumbnails .nav-next:before {
     content: '';
     display: block;
     padding-top: 50%; }
-  .posts article.post.featured:before, .posts article.post:first-child:before {
+  .thumbnails article.post.featured:before, .thumbnails article.post:first-child:before,
+  .thumbnails .nav-previous.featured:before,
+  .thumbnails .nav-previous:first-child:before,
+  .thumbnails .nav-next.featured:before,
+  .thumbnails .nav-next:first-child:before {
     padding-top: 75%; }
-  .posts article.post > a {
+  .thumbnails article.post > a,
+  .thumbnails .nav-previous > a,
+  .thumbnails .nav-next > a {
     position: absolute;
     top: 0;
     right: 0;
@@ -343,26 +448,48 @@ body.home .widget p {
     padding: 28px;
     text-decoration: none;
     display: block;
-    color: #222; }
-  .posts article.post > a:hover h3 {
+    color: #191e23; }
+  .thumbnails article.post > a:hover h3,
+  .thumbnails .nav-previous > a:hover h3,
+  .thumbnails .nav-next > a:hover h3 {
     text-decoration: underline; }
-  .posts article.post:hover {
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); }
-  .posts article.post .entry-meta {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
-    font-size: 12px;
+  .thumbnails article.post:hover,
+  .thumbnails .nav-previous:hover,
+  .thumbnails .nav-next:hover {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    background: #fff; }
+  .thumbnails article.post .entry-meta,
+  .thumbnails .nav-previous .entry-meta,
+  .thumbnails .nav-next .entry-meta {
     position: absolute;
     bottom: 28px; }
-  .posts article.post .entry-meta a {
-    color: #222;
-    text-decoration: none; }
-  .posts article.post .entry-meta a:hover {
-    text-decoration: underline; }
-  .posts article.post h3 svg {
+  .thumbnails article.post h3,
+  .thumbnails .nav-previous h3,
+  .thumbnails .nav-next h3 {
+    position: relative;
+    z-index: 1; }
+  .thumbnails article.post h3 svg,
+  .thumbnails .nav-previous h3 svg,
+  .thumbnails .nav-next h3 svg {
     width: 18px;
     height: 18px;
     position: absolute;
-    top: 36px;
-    right: 28px; }
+    top: 8px;
+    right: 0; }
+  .thumbnails article.post.has-post-thumbnail a:before,
+  .thumbnails .nav-previous.has-post-thumbnail a:before,
+  .thumbnails .nav-next.has-post-thumbnail a:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5); }
+  .thumbnails article.post.has-post-thumbnail a,
+  .thumbnails .nav-previous.has-post-thumbnail a,
+  .thumbnails .nav-next.has-post-thumbnail a {
+    color: #fff; }
 
 /*# sourceMappingURL=style.css.map */
