@@ -245,6 +245,7 @@ body ::-webkit-scrollbar-thumb {
 .more-link,
 .comments-area,
 body.home .widget {
+  clear: both;
   max-width: 720px;
   margin: 56px auto;
   padding: 0 20px; }
@@ -400,19 +401,55 @@ body.home .widget h2 {
 body.home .widget p {
   margin-bottom: 56px; }
 
-.posts {
-  margin: 0 28px 56px 28px;
-  column-count: 2;
-  column-gap: 0;
-  clear: both;
-  transform: translateX(0); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .nav-links .screen-reader-text {
+    display: inline-block;
+    margin-right: 4px; }
+  .nav-links > a,
+  .nav-links > span {
+    display: inline-block;
+    padding: 1em 2em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    background: #f8f9f9;
+    color: #555d66;
+    text-decoration: none;
+    margin-right: 4px; }
+  .nav-links > span.current {
+    font-weight: bold;
+    background: #555d66;
+    color: #fff; }
 
-@media only screen and (max-width: 640px) {
+.posts {
+  margin: 56px auto;
+  clear: both;
+  transform: translateX(0);
+  overflow: hidden;
+  max-width: 456px; }
+
+.posts article.post {
+  width: 100%;
+  max-width: 400px;
+  float: left; }
+  .posts article.post:before {
+    content: '';
+    display: block;
+    padding-top: 50%; }
+  .posts article.post.featured:before, .posts article.post:first-child:before {
+    padding-top: 75%; }
+
+@media only screen and (min-width: 456px) and (max-width: 912px) {
   .posts {
-    column-count: 1; } }
-@media only screen and (min-width: 1440px) {
+    max-width: 912px; } }
+@media only screen and (min-width: 912px) and (max-width: 1368px) {
   .posts {
-    column-count: 3; } }
+    max-width: 1368px; } }
+@media only screen and (min-width: 1368px) and (max-width: 1824px) {
+  .posts {
+    max-width: 1824px; } }
 .thumbnails article.post,
 .thumbnails .nav-previous,
 .thumbnails .nav-next {
@@ -424,19 +461,8 @@ body.home .widget p {
   background-size: cover;
   box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
   transition: all .1s linear;
-  break-inside: avoid; }
-  .thumbnails article.post:before,
-  .thumbnails .nav-previous:before,
-  .thumbnails .nav-next:before {
-    content: '';
-    display: block;
-    padding-top: 50%; }
-  .thumbnails article.post.featured:before, .thumbnails article.post:first-child:before,
-  .thumbnails .nav-previous.featured:before,
-  .thumbnails .nav-previous:first-child:before,
-  .thumbnails .nav-next.featured:before,
-  .thumbnails .nav-next:first-child:before {
-    padding-top: 75%; }
+  break-inside: avoid;
+  min-height: 200px; }
   .thumbnails article.post > a,
   .thumbnails .nav-previous > a,
   .thumbnails .nav-next > a {
@@ -462,7 +488,10 @@ body.home .widget p {
   .thumbnails .nav-previous .entry-meta,
   .thumbnails .nav-next .entry-meta {
     position: absolute;
-    bottom: 28px; }
+    bottom: 28px;
+    left: 28px;
+    padding: 0;
+    margin: 0; }
   .thumbnails article.post h3,
   .thumbnails .nav-previous h3,
   .thumbnails .nav-next h3 {
@@ -476,9 +505,16 @@ body.home .widget p {
     position: absolute;
     top: 8px;
     right: 0; }
-  .thumbnails article.post.has-post-thumbnail a:before,
-  .thumbnails .nav-previous.has-post-thumbnail a:before,
-  .thumbnails .nav-next.has-post-thumbnail a:before {
+  .thumbnails article.post.has-post-thumbnail a,
+  .thumbnails article.post.has-post-thumbnail .entry-meta,
+  .thumbnails .nav-previous.has-post-thumbnail a,
+  .thumbnails .nav-previous.has-post-thumbnail .entry-meta,
+  .thumbnails .nav-next.has-post-thumbnail a,
+  .thumbnails .nav-next.has-post-thumbnail .entry-meta {
+    color: #fff; }
+  .thumbnails article.post.has-post-thumbnail > a:before,
+  .thumbnails .nav-previous.has-post-thumbnail > a:before,
+  .thumbnails .nav-next.has-post-thumbnail > a:before {
     content: '';
     display: block;
     position: absolute;
@@ -487,9 +523,5 @@ body.home .widget p {
     bottom: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.5); }
-  .thumbnails article.post.has-post-thumbnail a,
-  .thumbnails .nav-previous.has-post-thumbnail a,
-  .thumbnails .nav-next.has-post-thumbnail a {
-    color: #fff; }
 
 /*# sourceMappingURL=style.css.map */
