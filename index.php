@@ -3,7 +3,7 @@
 	<?php if ( !function_exists( 'dynamic_sidebar' ) || !dynamic_sidebar( "Index, Above" ) ) : ?>
 	<?php endif;?>
 
-	<div class="posts">
+	<div class="posts thumbnails">
 	<?php
 	if ( have_posts() ) :
 
