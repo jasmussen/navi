@@ -555,9 +555,10 @@ hr.wp-block-separator {
 		column-count: 2;
 		column-gap: 0;
 		margin: 0 -$text-margin-small;
+		min-height: 300px;
 
-		.nav-previous,
-		.nav-next {
+		.nav-previous section,
+		.nav-next section {
 			height: 180px;
 		}
 	}
@@ -610,69 +611,75 @@ body.home .widget {
 
 
 $column-width: 400px;
-$column-break-1: ( $column-width * 1 ) + ( $text-margin-small * 2 );
-$column-break-2: ( $column-width * 2 ) + ( $text-margin-small * 4 );
-$column-break-3: ( $column-width * 3 ) + ( $text-margin-small * 6 );
-$column-break-4: ( $column-width * 4 ) + ( $text-margin-small * 8 );
 
 .posts {
 	margin: $text-margin auto;
 	clear: both;
-	transform: translateX( 0 );
 	overflow: hidden;
-	max-width: $column-break-1;
+	column-count: 1;
+	column-gap: 0;
 }
 
-.posts article.post {
-	width: 100%;
-	max-width: $column-width;
-	float: left;
+@media only screen and ( min-width: #{ $column-width * 2 } ) and ( max-width: #{ $column-width * 3 } )  {
+	.posts {
+		column-count: 2;
+	}
+}
 
-	&:before {
+@media only screen and ( min-width: #{ $column-width * 3 } ) {
+	.posts {
+		column-count: 3;
+	}
+}
+
+.posts article.post,
+.thumbnails article.post {
+	margin: 0;
+	padding: #{ $text-margin-small / 2 } $text-margin-small #{ $text-margin-small * 1.5 } $text-margin-small;
+
+	section:before {
 		content: '';
 		display: block;
 		padding-top: 50%;
 	}
 
-	&.featured:before,
-	&:first-child:before {
+	&:first-child section:before {
 		padding-top: 75%;
 	}
-}
 
-@media only screen and ( min-width: $column-break-1 ) and ( max-width: $column-break-2 )  {
-	.posts {
-		max-width: $column-break-2;
+	&.has-post-thumbnail section {
+		a,
+		.entry-meta {
+			color: $white;
+		}
+
+		> a:before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: rgba( 0,0,0, .5 );
+		}
 	}
 }
 
-@media only screen and ( min-width: $column-break-2 ) and ( max-width: $column-break-3 ) {
-	.posts {
-		max-width: $column-break-3;
+.thumbnails article.post {
+	section {
+		background: $light-gray-100;
+		padding: 0;
+		position: relative;
+		overflow: hidden;
+		box-shadow: 0 0px 0px rgba( 0,0,0,0 );
+		transition: all .1s linear;
+		break-inside: avoid;
+		min-height: 200px;
+		width: 100%;
 	}
-}
 
-@media only screen and ( min-width: $column-break-3 ) and ( max-width: $column-break-4 ) {
-	.posts {
-		max-width: $column-break-4;
-	}
-}
-
-.thumbnails article.post,
-.thumbnails .nav-previous,
-.thumbnails .nav-next {
-	background: $light-gray-100;
-	margin: 0 $text-margin-small $text-margin $text-margin-small;
-	padding: 0;
-	position: relative;
-	overflow: hidden;
-	background-size: cover;
-	box-shadow: 0 0px 0px rgba( 0,0,0,0 );
-	transition: all .1s linear;
-	break-inside: avoid;
-	min-height: 200px;
-
-	> a {
+	section > a {
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -682,13 +689,14 @@ $column-break-4: ( $column-width * 4 ) + ( $text-margin-small * 8 );
 		text-decoration: none;
 		display: block;
 		color: $dark-gray-900;
+		background-size: cover;
 	}
 
-	> a:hover h3 {
+	section > a:hover h3 {
 		text-decoration: underline;
 	}
 
-	&:hover {
+	section:hover {
 		box-shadow: 0 10px 40px rgba( 0,0,0, .2 );
 		background: $white;
 	}
@@ -713,22 +721,12 @@ $column-break-4: ( $column-width * 4 ) + ( $text-margin-small * 8 );
 		top: 8px;
 		right: 0;
 	}
+}
 
-	&.has-post-thumbnail {
-		a,
-		.entry-meta {
-			color: $white;
-		}
+.navigation .thumbnails article.post section:first-child:before {
+	padding-top: 0;
+}
 
-		> a:before {
-			content: '';
-			display: block;
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			background: rgba( 0,0,0, .5 );
-		}
-	}
+.navigation .thumbnails .column-spacer {
+	min-height: 210px;
 }

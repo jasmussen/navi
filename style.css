@@ -387,9 +387,10 @@ hr.wp-block-separator {
   .navigation .thumbnails {
     column-count: 2;
     column-gap: 0;
-    margin: -28px; }
-    .navigation .thumbnails .nav-previous,
-    .navigation .thumbnails .nav-next {
+    margin: -28px;
+    min-height: 300px; }
+    .navigation .thumbnails .nav-previous section,
+    .navigation .thumbnails .nav-next section {
       height: 180px; }
 
 /**
@@ -426,95 +427,35 @@ body.home .widget p {
 .posts {
   margin: 56px auto;
   clear: both;
-  transform: translateX(0);
   overflow: hidden;
-  max-width: 456px; }
+  column-count: 1;
+  column-gap: 0; }
 
-.posts article.post {
-  width: 100%;
-  max-width: 400px;
-  float: left; }
-  .posts article.post:before {
+@media only screen and (min-width: 800px) and (max-width: 1200px) {
+  .posts {
+    column-count: 2; } }
+@media only screen and (min-width: 1200px) {
+  .posts {
+    column-count: 3; } }
+.posts article.post,
+.thumbnails article.post {
+  margin: 0;
+  padding: 14px 28px 42px 28px; }
+  .posts article.post section:before,
+  .thumbnails article.post section:before {
     content: '';
     display: block;
     padding-top: 50%; }
-  .posts article.post.featured:before, .posts article.post:first-child:before {
+  .posts article.post:first-child section:before,
+  .thumbnails article.post:first-child section:before {
     padding-top: 75%; }
-
-@media only screen and (min-width: 456px) and (max-width: 912px) {
-  .posts {
-    max-width: 912px; } }
-@media only screen and (min-width: 912px) and (max-width: 1368px) {
-  .posts {
-    max-width: 1368px; } }
-@media only screen and (min-width: 1368px) and (max-width: 1824px) {
-  .posts {
-    max-width: 1824px; } }
-.thumbnails article.post,
-.thumbnails .nav-previous,
-.thumbnails .nav-next {
-  background: #f8f9f9;
-  margin: 0 28px 56px 28px;
-  padding: 0;
-  position: relative;
-  overflow: hidden;
-  background-size: cover;
-  box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
-  transition: all .1s linear;
-  break-inside: avoid;
-  min-height: 200px; }
-  .thumbnails article.post > a,
-  .thumbnails .nav-previous > a,
-  .thumbnails .nav-next > a {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 28px;
-    text-decoration: none;
-    display: block;
-    color: #191e23; }
-  .thumbnails article.post > a:hover h3,
-  .thumbnails .nav-previous > a:hover h3,
-  .thumbnails .nav-next > a:hover h3 {
-    text-decoration: underline; }
-  .thumbnails article.post:hover,
-  .thumbnails .nav-previous:hover,
-  .thumbnails .nav-next:hover {
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    background: #fff; }
-  .thumbnails article.post .entry-meta,
-  .thumbnails .nav-previous .entry-meta,
-  .thumbnails .nav-next .entry-meta {
-    position: absolute;
-    bottom: 28px;
-    left: 28px;
-    padding: 0;
-    margin: 0; }
-  .thumbnails article.post h3,
-  .thumbnails .nav-previous h3,
-  .thumbnails .nav-next h3 {
-    position: relative;
-    z-index: 1; }
-  .thumbnails article.post h3 svg,
-  .thumbnails .nav-previous h3 svg,
-  .thumbnails .nav-next h3 svg {
-    width: 18px;
-    height: 18px;
-    position: absolute;
-    top: 8px;
-    right: 0; }
-  .thumbnails article.post.has-post-thumbnail a,
-  .thumbnails article.post.has-post-thumbnail .entry-meta,
-  .thumbnails .nav-previous.has-post-thumbnail a,
-  .thumbnails .nav-previous.has-post-thumbnail .entry-meta,
-  .thumbnails .nav-next.has-post-thumbnail a,
-  .thumbnails .nav-next.has-post-thumbnail .entry-meta {
+  .posts article.post.has-post-thumbnail section a,
+  .posts article.post.has-post-thumbnail section .entry-meta,
+  .thumbnails article.post.has-post-thumbnail section a,
+  .thumbnails article.post.has-post-thumbnail section .entry-meta {
     color: #fff; }
-  .thumbnails article.post.has-post-thumbnail > a:before,
-  .thumbnails .nav-previous.has-post-thumbnail > a:before,
-  .thumbnails .nav-next.has-post-thumbnail > a:before {
+  .posts article.post.has-post-thumbnail section > a:before,
+  .thumbnails article.post.has-post-thumbnail section > a:before {
     content: '';
     display: block;
     position: absolute;
@@ -523,5 +464,53 @@ body.home .widget p {
     bottom: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.5); }
+
+.thumbnails article.post section {
+  background: #f8f9f9;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+  transition: all .1s linear;
+  break-inside: avoid;
+  min-height: 200px;
+  width: 100%; }
+.thumbnails article.post section > a {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 28px;
+  text-decoration: none;
+  display: block;
+  color: #191e23;
+  background-size: cover; }
+.thumbnails article.post section > a:hover h3 {
+  text-decoration: underline; }
+.thumbnails article.post section:hover {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  background: #fff; }
+.thumbnails article.post .entry-meta {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  padding: 0;
+  margin: 0; }
+.thumbnails article.post h3 {
+  position: relative;
+  z-index: 1; }
+.thumbnails article.post h3 svg {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 8px;
+  right: 0; }
+
+.navigation .thumbnails article.post section:first-child:before {
+  padding-top: 0; }
+
+.navigation .thumbnails .column-spacer {
+  min-height: 210px; }
 
 /*# sourceMappingURL=style.css.map */
