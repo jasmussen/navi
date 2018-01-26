@@ -84,7 +84,7 @@ header.site-header {
   right: 0;
   height: 56px;
   background: #f8f9f9;
-  font-size: 12px;
+  font-size: 13px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -108,7 +108,7 @@ header.site-header {
     height: 56px;
     margin: 0 auto 0 0; }
   header.site-header .site-branding h1 {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500; }
   header.site-header .site-branding a {
     padding: 0 28px 0 0;
@@ -132,7 +132,7 @@ header.site-header {
   header.site-header {
     top: auto;
     bottom: 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     position: fixed;
     border-bottom: none; }
 
@@ -159,7 +159,7 @@ header.site-header {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   padding: 0 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   color: #555d66;
   margin-bottom: 56px; }
 
@@ -193,7 +193,7 @@ input[type="text"],
 textarea {
   border: 1px solid #e2e4e7;
   padding: 1em;
-  font-size: 12px;
+  font-size: 13px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif; }
   input[type="text"]:focus,
   textarea:focus {
@@ -201,7 +201,7 @@ textarea {
     outline: none; }
 
 label {
-  font-size: 12px;
+  font-size: 13px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   color: #a2aab2; }
 
@@ -358,7 +358,7 @@ hr.wp-block-separator {
  * Comments
  */
 .comments-area .logged-in-as {
-  font-size: 12px;
+  font-size: 13px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   color: #555d66; }
   .comments-area .logged-in-as a {
@@ -402,10 +402,14 @@ body.home .widget h2 {
 body.home .widget p {
   margin-bottom: 56px; }
 
+/**
+ * Pagination
+ */
 .nav-links {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  padding: 56px 0; }
   .nav-links .screen-reader-text {
     display: inline-block;
     margin-right: 4px; }
@@ -414,15 +418,15 @@ body.home .widget p {
     display: inline-block;
     padding: 1em 2em;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
-    font-size: 12px;
-    background: #f8f9f9;
+    font-size: 13px;
     color: #555d66;
     text-decoration: none;
     margin-right: 4px; }
   .nav-links > span.current {
-    font-weight: bold;
-    background: #555d66;
-    color: #fff; }
+    background: #f8f9f9; }
+  .nav-links > a:hover {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    background: #fff; }
 
 .posts {
   margin: 56px auto;

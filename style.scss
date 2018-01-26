@@ -21,7 +21,7 @@ $text-margin-small: 28px;
 $responsive-padding: 20px;
 $fonts-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
 $fonts-serif: "Noto Serif", serif;
-$fonts-small: 12px;
+$fonts-small: 13px;
 
 $blue-medium: #009fd4;
 
@@ -45,6 +45,9 @@ $light-gray-300: #edeff0;
 $light-gray-200: #f3f4f5;
 $light-gray-100: #f8f9f9;
 $white: #fff;
+
+$shadow-invisible: 0 0px 0px rgba( 0,0,0,0 );
+$shadow-big: 0 10px 40px rgba( 0,0,0, .2 );
 
 
 /**
@@ -205,7 +208,7 @@ header.site-header {
 	header.site-header {
 		top: auto;
 		bottom: 0;
-		box-shadow: 0 0 10px rgba( 0,0,0, .25 );
+		box-shadow: $shadow-big;
 		position: fixed;
 		border-bottom: none;
 	}
@@ -580,10 +583,16 @@ body.home .widget {
 	}
 }
 
+
+/**
+ * Pagination
+ */
+
 .nav-links {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	padding: $text-margin 0;
 
 	.screen-reader-text {
 		display: inline-block;
@@ -596,16 +605,18 @@ body.home .widget {
 		padding: 1em 2em;
 		font-family: $fonts-system;
 		font-size: $fonts-small;
-		background: $light-gray-100;
 		color: $dark-gray-500;
 		text-decoration: none;
 		margin-right: 4px;
 	}
 
 	> span.current {
-		font-weight: bold;
-		background: $dark-gray-500;
-		color: $white;
+		background: $light-gray-100;
+	}
+
+	> a:hover {
+		box-shadow: $shadow-big;
+		background: $white;
 	}
 }
 
@@ -672,7 +683,7 @@ $column-width: 400px;
 		padding: 0;
 		position: relative;
 		overflow: hidden;
-		box-shadow: 0 0px 0px rgba( 0,0,0,0 );
+		box-shadow: $shadow-invisible;
 		transition: all .1s linear;
 		break-inside: avoid;
 		min-height: 200px;
@@ -697,7 +708,7 @@ $column-width: 400px;
 	}
 
 	section:hover {
-		box-shadow: 0 10px 40px rgba( 0,0,0, .2 );
+		box-shadow: $shadow-big;
 		background: $white;
 	}
 
