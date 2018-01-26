@@ -141,3 +141,19 @@ if ( function_exists( 'register_sidebar' ) )
 		'after_title' => '</h2>',
 	)
 );
+
+
+/**
+ * First post
+ */
+
+function is_first_post() {
+	static $called = FALSE;
+
+	if ( ! $called ) {
+		$called = TRUE;
+		return TRUE;
+	}
+
+	return FALSE;
+}

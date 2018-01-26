@@ -16,6 +16,7 @@ Tags: translation-ready
  */
 
 $theme-width: 720px;
+$theme-width-fullwide: 1800px;
 $text-margin: 56px;
 $text-margin-small: 28px;
 $responsive-padding: 20px;
@@ -331,7 +332,7 @@ body ::-webkit-scrollbar-thumb {
 
 .alignfull,
 .alignwide {
-	max-width: 1800px;
+	max-width: $theme-width-fullwide;
 	margin-left: auto;
 	margin-right: auto;
 
@@ -701,6 +702,7 @@ $column-width: 400px;
 		display: block;
 		color: $dark-gray-900;
 		background-size: cover;
+		background-position: center center;
 	}
 
 	section > a:hover h3 {
@@ -740,4 +742,46 @@ $column-width: 400px;
 
 .navigation .thumbnails .column-spacer {
 	min-height: 210px;
+}
+
+
+/**
+ * Featured
+ */
+
+.site-content .featured {
+	margin: 0 auto #{ $text-margin * 3 } auto;
+	max-width: $theme-width * 1.5;
+
+	article.post {
+		padding: 35% $text-margin-small 0;
+		background-size: cover;
+		background-position: center center;
+	}
+
+	article.post h3 {
+		margin: 0;
+	}
+
+	article.post h3 a {
+		display: block;
+		background: $white;
+		color: $dark-gray-900;
+		text-decoration: none;
+		padding: $text-margin-small $text-margin-small 0 $text-margin-small;
+	}
+
+	article.post h3 a:hover {
+		text-decoration: underline;
+	}
+
+	article.post .entry-meta {
+		position: absolute;
+		margin: $text-margin-small 0 0 $text-margin-small;
+		color: $dark-gray-900;
+
+		a {
+			color: $dark-gray-900;
+		}
+	}
 }
