@@ -355,6 +355,7 @@ body ::-webkit-scrollbar-thumb {
 .more-link,
 .comments-area,
 body.home .widget {
+	clear: both;
 	max-width: $theme-width;
 	margin: $text-margin auto;
 	padding: 0 $responsive-padding;
@@ -554,9 +555,10 @@ hr.wp-block-separator {
 		column-count: 2;
 		column-gap: 0;
 		margin: 0 -$text-margin-small;
+		min-height: 300px;
 
-		.nav-previous,
-		.nav-next {
+		.nav-previous section,
+		.nav-next section {
 			height: 180px;
 		}
 	}
@@ -578,55 +580,106 @@ body.home .widget {
 	}
 }
 
-.posts {
-	margin: 0 $text-margin-small $text-margin $text-margin-small;
-	column-count: 2;
-	column-gap: 0;
-	clear: both;
-	transform: translateX( 0 );
-}
+.nav-links {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-@media only screen and ( max-width: 640px ) {
-
-	.posts {
-		column-count: 1;
+	.screen-reader-text {
+		display: inline-block;
+		margin-right: 4px;
 	}
 
+	> a,
+	> span {
+		display: inline-block;
+		padding: 1em 2em;
+		font-family: $fonts-system;
+		font-size: $fonts-small;
+		background: $light-gray-100;
+		color: $dark-gray-500;
+		text-decoration: none;
+		margin-right: 4px;
+	}
+
+	> span.current {
+		font-weight: bold;
+		background: $dark-gray-500;
+		color: $white;
+	}
 }
 
-@media only screen and ( min-width: 1440px ) {
 
+$column-width: 400px;
+
+.posts {
+	margin: $text-margin auto;
+	clear: both;
+	overflow: hidden;
+	column-count: 1;
+	column-gap: 0;
+}
+
+@media only screen and ( min-width: #{ $column-width * 2 } ) and ( max-width: #{ $column-width * 3 } )  {
+	.posts {
+		column-count: 2;
+	}
+}
+
+@media only screen and ( min-width: #{ $column-width * 3 } ) {
 	.posts {
 		column-count: 3;
 	}
-
 }
 
-.thumbnails article.post,
-.thumbnails .nav-previous,
-.thumbnails .nav-next {
-	background: $light-gray-100;
-	margin: 0 $text-margin-small $text-margin $text-margin-small;
-	padding: 0;
-	position: relative;
-	overflow: hidden;
-	background-size: cover;
-	box-shadow: 0 0px 0px rgba( 0,0,0,0 );
-	transition: all .1s linear;
-	break-inside: avoid;
+.posts article.post,
+.thumbnails article.post {
+	margin: 0;
+	padding: #{ $text-margin-small / 2 } $text-margin-small #{ $text-margin-small * 1.5 } $text-margin-small;
 
-	&:before {
+	section:before {
 		content: '';
 		display: block;
 		padding-top: 50%;
 	}
 
-	&.featured:before,
-	&:first-child:before {
+	&:first-child section:before {
 		padding-top: 75%;
 	}
 
-	> a {
+	&.has-post-thumbnail section {
+		a,
+		.entry-meta {
+			color: $white;
+		}
+
+		> a:before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: rgba( 0,0,0, .5 );
+		}
+	}
+}
+
+.thumbnails article.post {
+	section {
+		background: $light-gray-100;
+		padding: 0;
+		position: relative;
+		overflow: hidden;
+		box-shadow: 0 0px 0px rgba( 0,0,0,0 );
+		transition: all .1s linear;
+		break-inside: avoid;
+		min-height: 200px;
+		width: 100%;
+	}
+
+	section > a {
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -636,13 +689,14 @@ body.home .widget {
 		text-decoration: none;
 		display: block;
 		color: $dark-gray-900;
+		background-size: cover;
 	}
 
-	> a:hover h3 {
+	section > a:hover h3 {
 		text-decoration: underline;
 	}
 
-	&:hover {
+	section:hover {
 		box-shadow: 0 10px 40px rgba( 0,0,0, .2 );
 		background: $white;
 	}
@@ -650,6 +704,9 @@ body.home .widget {
 	.entry-meta {
 		position: absolute;
 		bottom: $text-margin-small;
+		left: $text-margin-small;
+		padding: 0;
+		margin: 0;
 	}
 
 	h3 {
@@ -664,21 +721,12 @@ body.home .widget {
 		top: 8px;
 		right: 0;
 	}
+}
 
-	&.has-post-thumbnail {
-		a:before {
-			content: '';
-			display: block;
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			background: rgba( 0,0,0, .5 );
-		}
+.navigation .thumbnails article.post section:first-child:before {
+	padding-top: 0;
+}
 
-		a {
-			color: $white;
-		}
-	}
+.navigation .thumbnails .column-spacer {
+	min-height: 210px;
 }

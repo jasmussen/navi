@@ -245,6 +245,7 @@ body ::-webkit-scrollbar-thumb {
 .more-link,
 .comments-area,
 body.home .widget {
+  clear: both;
   max-width: 720px;
   margin: 56px auto;
   padding: 0 20px; }
@@ -386,9 +387,10 @@ hr.wp-block-separator {
   .navigation .thumbnails {
     column-count: 2;
     column-gap: 0;
-    margin: -28px; }
-    .navigation .thumbnails .nav-previous,
-    .navigation .thumbnails .nav-next {
+    margin: -28px;
+    min-height: 300px; }
+    .navigation .thumbnails .nav-previous section,
+    .navigation .thumbnails .nav-next section {
       height: 180px; }
 
 /**
@@ -400,85 +402,60 @@ body.home .widget h2 {
 body.home .widget p {
   margin-bottom: 56px; }
 
-.posts {
-  margin: 0 28px 56px 28px;
-  column-count: 2;
-  column-gap: 0;
-  clear: both;
-  transform: translateX(0); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .nav-links .screen-reader-text {
+    display: inline-block;
+    margin-right: 4px; }
+  .nav-links > a,
+  .nav-links > span {
+    display: inline-block;
+    padding: 1em 2em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    background: #f8f9f9;
+    color: #555d66;
+    text-decoration: none;
+    margin-right: 4px; }
+  .nav-links > span.current {
+    font-weight: bold;
+    background: #555d66;
+    color: #fff; }
 
-@media only screen and (max-width: 640px) {
+.posts {
+  margin: 56px auto;
+  clear: both;
+  overflow: hidden;
+  column-count: 1;
+  column-gap: 0; }
+
+@media only screen and (min-width: 800px) and (max-width: 1200px) {
   .posts {
-    column-count: 1; } }
-@media only screen and (min-width: 1440px) {
+    column-count: 2; } }
+@media only screen and (min-width: 1200px) {
   .posts {
     column-count: 3; } }
-.thumbnails article.post,
-.thumbnails .nav-previous,
-.thumbnails .nav-next {
-  background: #f8f9f9;
-  margin: 0 28px 56px 28px;
-  padding: 0;
-  position: relative;
-  overflow: hidden;
-  background-size: cover;
-  box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
-  transition: all .1s linear;
-  break-inside: avoid; }
-  .thumbnails article.post:before,
-  .thumbnails .nav-previous:before,
-  .thumbnails .nav-next:before {
+.posts article.post,
+.thumbnails article.post {
+  margin: 0;
+  padding: 14px 28px 42px 28px; }
+  .posts article.post section:before,
+  .thumbnails article.post section:before {
     content: '';
     display: block;
     padding-top: 50%; }
-  .thumbnails article.post.featured:before, .thumbnails article.post:first-child:before,
-  .thumbnails .nav-previous.featured:before,
-  .thumbnails .nav-previous:first-child:before,
-  .thumbnails .nav-next.featured:before,
-  .thumbnails .nav-next:first-child:before {
+  .posts article.post:first-child section:before,
+  .thumbnails article.post:first-child section:before {
     padding-top: 75%; }
-  .thumbnails article.post > a,
-  .thumbnails .nav-previous > a,
-  .thumbnails .nav-next > a {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 28px;
-    text-decoration: none;
-    display: block;
-    color: #191e23; }
-  .thumbnails article.post > a:hover h3,
-  .thumbnails .nav-previous > a:hover h3,
-  .thumbnails .nav-next > a:hover h3 {
-    text-decoration: underline; }
-  .thumbnails article.post:hover,
-  .thumbnails .nav-previous:hover,
-  .thumbnails .nav-next:hover {
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    background: #fff; }
-  .thumbnails article.post .entry-meta,
-  .thumbnails .nav-previous .entry-meta,
-  .thumbnails .nav-next .entry-meta {
-    position: absolute;
-    bottom: 28px; }
-  .thumbnails article.post h3,
-  .thumbnails .nav-previous h3,
-  .thumbnails .nav-next h3 {
-    position: relative;
-    z-index: 1; }
-  .thumbnails article.post h3 svg,
-  .thumbnails .nav-previous h3 svg,
-  .thumbnails .nav-next h3 svg {
-    width: 18px;
-    height: 18px;
-    position: absolute;
-    top: 8px;
-    right: 0; }
-  .thumbnails article.post.has-post-thumbnail a:before,
-  .thumbnails .nav-previous.has-post-thumbnail a:before,
-  .thumbnails .nav-next.has-post-thumbnail a:before {
+  .posts article.post.has-post-thumbnail section a,
+  .posts article.post.has-post-thumbnail section .entry-meta,
+  .thumbnails article.post.has-post-thumbnail section a,
+  .thumbnails article.post.has-post-thumbnail section .entry-meta {
+    color: #fff; }
+  .posts article.post.has-post-thumbnail section > a:before,
+  .thumbnails article.post.has-post-thumbnail section > a:before {
     content: '';
     display: block;
     position: absolute;
@@ -487,9 +464,53 @@ body.home .widget p {
     bottom: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.5); }
-  .thumbnails article.post.has-post-thumbnail a,
-  .thumbnails .nav-previous.has-post-thumbnail a,
-  .thumbnails .nav-next.has-post-thumbnail a {
-    color: #fff; }
+
+.thumbnails article.post section {
+  background: #f8f9f9;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+  transition: all .1s linear;
+  break-inside: avoid;
+  min-height: 200px;
+  width: 100%; }
+.thumbnails article.post section > a {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 28px;
+  text-decoration: none;
+  display: block;
+  color: #191e23;
+  background-size: cover; }
+.thumbnails article.post section > a:hover h3 {
+  text-decoration: underline; }
+.thumbnails article.post section:hover {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  background: #fff; }
+.thumbnails article.post .entry-meta {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  padding: 0;
+  margin: 0; }
+.thumbnails article.post h3 {
+  position: relative;
+  z-index: 1; }
+.thumbnails article.post h3 svg {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 8px;
+  right: 0; }
+
+.navigation .thumbnails article.post section:first-child:before {
+  padding-top: 0; }
+
+.navigation .thumbnails .column-spacer {
+  min-height: 210px; }
 
 /*# sourceMappingURL=style.css.map */
