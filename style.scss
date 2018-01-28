@@ -396,6 +396,7 @@ body ::-webkit-scrollbar-thumb {
 	max-width: $theme-width-fullwide;
 	margin-left: auto;
 	margin-right: auto;
+	padding: 0;
 
 	img {
 		width: 100%;
@@ -444,10 +445,13 @@ body.home .widget {
 	}
 
 	> ul {
-		max-width: $theme-width;
 		margin-top: $text-margin;
 		margin-bottom: $text-margin;
 		padding: 0 #{ $responsive-padding - 8px };
+	}
+
+	> ul:not( .alignfull ):not( .alignwide ) {
+		max-width: $theme-width;
 	}
 
 	p a {
@@ -483,6 +487,43 @@ body.home .widget {
 
 	> p:first-of-type {
 		margin-top: 0;
+	}
+}
+
+
+/**
+ * Gallery
+ */
+
+// To use, apply `custom-gallery` as an additional CSS class to your Gallery block under Block settings
+.site-content article > ul.custom-gallery {
+	column-count: 1;
+	column-gap: 0;
+	margin-bottom: 200px;
+	padding: 0;
+	display: block;
+
+	@include break-small() {
+		column-count: 2;
+	}
+
+	@include break-large() {
+		column-count: 3;
+	}
+
+	@include break-huge() {
+		column-count: 4;
+	}
+
+	// Reset Gutenberg styles
+	.blocks-gallery-item {
+		display: block;
+		width: auto;
+		margin: 0;
+	}
+
+	.blocks-gallery-item figure {
+		height: auto;
 	}
 }
 
