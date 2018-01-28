@@ -433,12 +433,16 @@ body.home .widget p {
     color: #555d66;
     text-decoration: none;
     margin-right: 4px; }
-  .nav-links > span.current {
+  .nav-links > .current,
+  .nav-links .nav-archive {
     background: #f3f4f5; }
   .nav-links > a:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     background: #fff; }
 
+/**
+ * Post columns
+ */
 .posts {
   margin: 56px auto;
   clear: both;

@@ -669,7 +669,8 @@ body.home .widget {
 		margin-right: 4px;
 	}
 
-	> span.current {
+	> .current,
+	.nav-archive {
 		background: $light-gray-200;
 	}
 
@@ -679,6 +680,10 @@ body.home .widget {
 	}
 }
 
+
+/**
+ * Post columns
+ */
 
 $column-width: 400px;
 

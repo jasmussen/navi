@@ -47,12 +47,19 @@
 	}
 
 	// Pagination
-	the_posts_pagination(
-		array(
-			'prev_text'          => '<span class="screen-reader-text">' . __( 'Previous page', 'navi' ) . '</span>',
-			'next_text'          => '<span class="screen-reader-text">' . __( 'Next page', 'navi' ) . '</span>',
-			'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'navi' ) . ' </span>',
-		)
-	);
+	if ( is_front_page() && !is_paged() ) { ?>
+	<div class="nav-links">
+		<a class="nav-archive" href="/?paged=2"><span class="screen-reader-text">Archive</span></a>
+	</div>
+	<?php
+	} else {
+		the_posts_pagination(
+			array(
+				'prev_text'          => '<span class="screen-reader-text">' . __( 'Previous page', 'navi' ) . '</span>',
+				'next_text'          => '<span class="screen-reader-text">' . __( 'Next page', 'navi' ) . '</span>',
+				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'navi' ) . ' </span>',
+			)
+		);
+	}
 
 get_footer();
