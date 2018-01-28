@@ -14,6 +14,9 @@ Tags: translation-ready
  * Variables
  */
 /**
+ * Mixins
+ */
+/**
  * Base Styles
  */
 html,
@@ -69,28 +72,39 @@ a {
  * Navigation
  */
 body {
-  padding-top: 56px; }
-  body.logged-in {
-    padding-top: 88px; }
+  padding-top: 0; }
+  @media (min-width: 782px) {
+    body {
+      padding-top: 56px; }
+      body.logged-in {
+        padding-top: 88px; } }
 
 header.site-header {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   font-weight: 500;
-  background: #fff;
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  right: 0;
+  z-index: 10;
   height: 56px;
   background: #f3f4f5;
   font-size: 13px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  padding: 0 56px; }
-  body.logged-in header.site-header {
-    top: 32px; }
+  padding: 0 56px;
+  position: fixed;
+  bottom: 0;
+  left: -36px;
+  right: -36px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); }
+  @media (min-width: 782px) {
+    header.site-header {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: auto;
+      box-shadow: none; }
+      body.logged-in header.site-header {
+        top: 32px; } }
   header.site-header a {
     display: flex;
     height: 56px;
@@ -102,7 +116,7 @@ header.site-header {
     text-decoration: none; }
   header.site-header ul li.active a,
   header.site-header ul li a:hover {
-    color: #000; }
+    color: #191e23; }
   header.site-header .site-branding {
     display: flex;
     height: 56px;
@@ -112,7 +126,7 @@ header.site-header {
     font-weight: 500; }
   header.site-header .site-branding a {
     padding: 0 28px 0 0;
-    color: #000; }
+    color: #191e23; }
   header.site-header .main-navigation {
     display: flex;
     height: 56px;
@@ -126,25 +140,8 @@ header.site-header {
     display: inline; }
   header.site-header .main-navigation a {
     padding: 0 0 0 28px; }
-
-@media only screen and (max-width: 782px) {
-  body.logged-in {
-    padding-top: 0; }
-
-  header.site-header,
-  body.logged-in header.site-header {
-    top: auto;
-    bottom: 0;
-    left: -36px;
-    right: -36px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    position: fixed;
-    border-bottom: none; }
-
-  body {
-    margin-top: 0; } }
-.menu-toggle {
-  display: none; }
+  header.site-header .menu-toggle {
+    display: none; }
 
 /**
  * Posts
@@ -387,12 +384,12 @@ hr.wp-block-separator {
     position: relative; }
   .navigation .thumbnails {
     margin: -28px; }
-  .navigation .previous,
-  .navigation .next {
+  .navigation .nav-previous,
+  .navigation .nav-next {
     width: 50%; }
-  .navigation .previous {
+  .navigation .nav-previous {
     float: left; }
-  .navigation .next {
+  .navigation .nav-next {
     float: right; }
 
 /**
@@ -435,14 +432,12 @@ body.home .widget p {
   clear: both;
   overflow: hidden;
   column-count: 1;
-  column-gap: 0; }
+  column-gap: 0;
+  max-width: 1130px; }
 
-@media only screen and (min-width: 800px) and (max-width: 1200px) {
+@media only screen and (min-width: 800px) {
   .posts {
     column-count: 2; } }
-@media only screen and (min-width: 1200px) {
-  .posts {
-    column-count: 3; } }
 .posts article.post,
 .thumbnails article.post {
   margin: 0;
@@ -536,7 +531,8 @@ body.home .widget p {
     .site-content .featured article.post.has-post-thumbnail {
       background-size: cover; }
   .site-content .featured article.post h3 {
-    margin: 0; }
+    margin: 0;
+    padding: 0; }
   .site-content .featured article.post h3 a {
     display: block;
     background: #fff;
@@ -547,7 +543,7 @@ body.home .widget p {
     text-decoration: underline; }
   .site-content .featured article.post .entry-meta {
     position: absolute;
-    margin: 28px 0 0 28px;
+    margin: 28px 0 0 0;
     color: #191e23; }
     .site-content .featured article.post .entry-meta a {
       color: #191e23; }

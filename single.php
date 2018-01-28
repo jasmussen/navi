@@ -13,7 +13,7 @@
 		?>
 		<div class="navigation">
 			<div class="thumbnails">
-				<div class="previous">
+				<div class="nav-previous">
 					<?php
 					$prevPost = get_previous_post( true );
 					if ( $prevPost ) {
@@ -32,7 +32,7 @@
 					}
 					?>
 				</div>
-				<div class="next">
+				<div class="nav-next">
 					<?php
 					$nextPost = get_next_post( true );
 					if( $nextPost ) {

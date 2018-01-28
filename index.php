@@ -47,20 +47,6 @@
 		</div>
 		<?php
 
-
-
-
-
-
-
-		the_posts_pagination(
-			array(
-				'prev_text'          => '<span class="screen-reader-text">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
-				'next_text'          => '<span class="screen-reader-text">' . __( 'Next page', 'twentyseventeen' ) . '</span>',
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyseventeen' ) . ' </span>',
-			)
-		);
-
 	else :
 
 		get_template_part( 'template-parts/content', 'none' );
@@ -69,5 +55,15 @@
 
 	<?php if ( !function_exists( 'dynamic_sidebar' ) || !dynamic_sidebar( "Index, Below" ) ) : ?>
 	<?php endif;?>
+
+	<?php
+	the_posts_pagination(
+		array(
+			'prev_text'          => '<span class="screen-reader-text">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
+			'next_text'          => '<span class="screen-reader-text">' . __( 'Next page', 'twentyseventeen' ) . '</span>',
+			'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyseventeen' ) . ' </span>',
+		)
+	);
+	?>
 
 <?php get_footer();

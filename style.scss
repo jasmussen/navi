@@ -26,7 +26,7 @@ $fonts-small: 13px;
 
 $blue-medium: #009fd4;
 
-$black: #000;
+$dark-gray-900: #000;
 $dark-gray-900: #191e23;
 $dark-gray-800: #23282d;
 $dark-gray-700: #32373c;
@@ -50,6 +50,54 @@ $white: #fff;
 $shadow-invisible: 0 0px 0px rgba( 0,0,0,0 );
 $shadow-big: 0 10px 30px rgba( 0,0,0, .2 );
 $shadow-responsive-footer: 0 0 20px rgba( 0,0,0, .2 );
+
+
+/**
+ * Mixins
+ */
+
+$break-huge: 1440px;
+$break-wide: 1280px;
+$break-large: 960px;	// admin sidebar auto folds
+$break-medium: 782px;	// adminbar goes big
+$break-small: 600px;
+$break-mobile: 480px;
+
+@mixin break-huge() {
+	@media ( min-width: #{ ( $break-huge ) } ) {
+		@content;
+	}
+}
+
+@mixin break-wide() {
+	@media ( min-width: #{ ( $break-wide ) } ) {
+		@content;
+	}
+}
+
+@mixin break-large() {
+	@media ( min-width: #{ ( $break-large ) } ) {
+		@content;
+	}
+}
+
+@mixin break-medium() {
+	@media ( min-width: #{ ( $break-medium ) } ) {
+		@content;
+	}
+}
+
+@mixin break-small() {
+	@media ( min-width: #{ ( $break-small ) } ) {
+		@content;
+	}
+}
+
+@mixin break-mobile() {
+	@media ( min-width: #{ ( $break-mobile ) } ) {
+		@content;
+	}
+}
 
 
 /**
@@ -121,22 +169,21 @@ a {
  */
 
 body {
-	padding-top: $text-margin;
+	padding-top: 0;
 
-	&.logged-in {
-		padding-top: $text-margin + 32px;
+	@include break-medium {
+		padding-top: $text-margin;
+
+		&.logged-in {
+			padding-top: $text-margin + 32px;
+		}
 	}
 }
 
 header.site-header {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
 	font-weight: 500;
-	background: $white;
-	position: absolute;
-	z-index: 1;
-	left: 0;
-	top: 0;
-	right: 0;
+	z-index: 10;
 	height: $text-margin;
 	background: $light-gray-200;
 	font-size: $fonts-small;
@@ -145,8 +192,22 @@ header.site-header {
 	justify-content: flex-start;
 	padding: 0 $text-margin;
 
-	body.logged-in & {
-		top: 32px;
+	position: fixed;
+	bottom: 0;
+	left: -#{ $text-margin - $responsive-padding };
+	right: -#{ $text-margin - $responsive-padding };
+	box-shadow: $shadow-responsive-footer;
+
+	@include break-medium {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: auto;
+		box-shadow: none;
+		body.logged-in & {
+			top: 32px;
+		}
 	}
 
 	a {
@@ -162,7 +223,7 @@ header.site-header {
 
 	ul li.active a,
 	ul li a:hover {
-		color: $black;
+		color: $dark-gray-900;
 	}
 
 	.site-branding {
@@ -178,7 +239,7 @@ header.site-header {
 
 	.site-branding a {
 		padding: 0 $text-margin-small 0 0;
-		color: $black;
+		color: $dark-gray-900;
 	}
 
 	.main-navigation {
@@ -201,33 +262,10 @@ header.site-header {
 	.main-navigation a {
 		padding: 0 0 0 $text-margin-small;
 	}
-}
 
-@media only screen and ( max-width: 782px ) {
-
-	body.logged-in {
-		padding-top: 0;
+	.menu-toggle {
+		display: none;
 	}
-
-	header.site-header,
-	body.logged-in header.site-header {
-		top: auto;
-		bottom: 0;
-		left: -#{ $text-margin - $responsive-padding };
-		right: -#{ $text-margin - $responsive-padding };
-		box-shadow: $shadow-responsive-footer;
-		position: fixed;
-		border-bottom: none;
-	}
-
-	body {
-		margin-top: 0;
-	}
-
-}
-
-.menu-toggle {
-	display: none;
 }
 
 
@@ -557,16 +595,16 @@ hr.wp-block-separator {
 		margin: 0 -$text-margin-small;
 	}
 
-	.previous,
-	.next {
+	.nav-previous,
+	.nav-next {
 		width: 50%;
 	}
 
-	.previous {
+	.nav-previous {
 		float: left;
 	}
 
-	.next {
+	.nav-next {
 		float: right;
 	}
 }
@@ -633,17 +671,12 @@ $column-width: 400px;
 	overflow: hidden;
 	column-count: 1;
 	column-gap: 0;
+	max-width: 1130px;
 }
 
-@media only screen and ( min-width: #{ $column-width * 2 } ) and ( max-width: #{ $column-width * 3 } )  {
+@media only screen and ( min-width: #{ $column-width * 2 } )  {
 	.posts {
 		column-count: 2;
-	}
-}
-
-@media only screen and ( min-width: #{ $column-width * 3 } ) {
-	.posts {
-		column-count: 3;
 	}
 }
 
@@ -774,6 +807,7 @@ $column-width: 400px;
 
 	article.post h3 {
 		margin: 0;
+		padding: 0;
 	}
 
 	article.post h3 a {
@@ -790,7 +824,7 @@ $column-width: 400px;
 
 	article.post .entry-meta {
 		position: absolute;
-		margin: $text-margin-small 0 0 $text-margin-small;
+		margin: $text-margin-small 0 0 0;
 		color: $dark-gray-900;
 
 		a {
