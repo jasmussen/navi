@@ -1,48 +1,44 @@
-<?php get_header(); ?>
+<?php get_header();
 
-	<?php if ( !function_exists( 'dynamic_sidebar' ) || !dynamic_sidebar( "Index, Above" ) ) : ?>
-	<?php endif;?>
+	// Widgets top
+	if ( is_front_page() && !is_paged() ) {
+		dynamic_sidebar( 'Index, Above' );
+	}
 
-	<?php
+	// Main Content
 	if ( have_posts() ) :
 
-		if ( is_home() && ! is_front_page() ) : ?>
-			<header>
-				<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-			</header>
-		<?php
-		endif;
-
-
 		// Featured post
+		if ( is_front_page() && !is_paged() ) {
 		?>
 		<div class="featured">
 		<?php
-		while ( have_posts() ) : the_post();
+			// Fetch latest post to show featured
+			query_posts( 'posts_per_page=1' );
+			while ( have_posts() ) : the_post();
 
-			if ( $count == 0 && !is_paged() ) {
 				get_template_part( 'template-parts/content', 'featured' );
-			}
-			$count++;
 
-		endwhile;
+			endwhile;
 		?>
 		</div>
 		<?php
+		}
 
-
+		// Post thumbnails
 		?>
 		<div class="posts thumbnails">
 		<?php
-
-		while ( have_posts() ) : the_post();
-
-			if ( $count > 0 || is_paged() ) {
-				get_template_part( 'template-parts/content', 'thumbnail' );
+			// If on homepage, fetch the next 4, otherwise show standard queries on archives
+			if ( is_front_page() && !is_paged() ) {
+				rewind_posts();
+				query_posts( 'posts_per_page=4&offset=1' );
 			}
+			while ( have_posts() ) : the_post();
 
-		endwhile;
+				get_template_part( 'template-parts/content', 'thumbnail' );
 
+			endwhile;
 		?>
 		</div>
 		<?php
@@ -51,12 +47,16 @@
 
 		get_template_part( 'template-parts/content', 'none' );
 
-	endif; ?>
+	endif;
 
-	<?php if ( !function_exists( 'dynamic_sidebar' ) || !dynamic_sidebar( "Index, Below" ) ) : ?>
-	<?php endif;?>
+	// Widgets below, and reset pagination
+	if ( is_front_page() && !is_paged() ) {
+		dynamic_sidebar( 'Index, Below' );
+		rewind_posts();
+		query_posts( 'posts_per_page=10' );
+	}
 
-	<?php
+	// Pagination
 	the_posts_pagination(
 		array(
 			'prev_text'          => '<span class="screen-reader-text">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
@@ -64,6 +64,5 @@
 			'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyseventeen' ) . ' </span>',
 		)
 	);
-	?>
 
-<?php get_footer();
+get_footer();
