@@ -708,10 +708,6 @@ $column-width: 400px;
 		padding-top: 50%;
 	}
 
-	&:first-child section:before {
-		padding-top: 75%;
-	}
-
 	&.has-post-thumbnail section {
 		a,
 		.entry-meta {
@@ -811,27 +807,30 @@ $column-width: 400px;
 		position: relative;
 	}
 
-	article.post .entry-thumbnail {
-		display: block;
-		position: absolute;
-		margin: 0;
-		max-width: none;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		z-index: 0;
+	article.post {
 
-		background-position: center center;
-		background-color: $light-gray-200;
-		background-repeat: no-repeat;
+		.entry-thumbnail {
+			display: block;
+			position: absolute;
+			margin: 0;
+			max-width: none;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 0;
 
-		// No thumbnail
-		background-image: url( 'assets/pattern.svg' );
-		background-size: 24px auto;
+			background-position: center center;
+			background-color: $light-gray-200;
+			background-repeat: no-repeat;
+
+			// No thumbnail
+			background-image: url( 'assets/pattern.svg' );
+			background-size: 24px auto;
+		}
 
 		// With thumbnail
-		&.has-post-thumbnail {
+		&.has-post-thumbnail .entry-thumbnail {
 			background-size: cover;
 		}
 	}
@@ -839,6 +838,7 @@ $column-width: 400px;
 	article.post .entry-meta {
 		position: absolute;
 		margin: $text-margin-small 0 0 0;
+		padding: 0 0 0 $text-margin-small;
 		color: $dark-gray-900;
 
 		a {

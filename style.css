@@ -459,9 +459,6 @@ body.home .widget p {
     content: '';
     display: block;
     padding-top: 50%; }
-  .posts article.post:first-child section:before,
-  .thumbnails article.post:first-child section:before {
-    padding-top: 75%; }
   .posts article.post.has-post-thumbnail section a,
   .posts article.post.has-post-thumbnail section .entry-meta,
   .thumbnails article.post.has-post-thumbnail section a,
@@ -551,11 +548,12 @@ body.home .widget p {
     background-repeat: no-repeat;
     background-image: url("assets/pattern.svg");
     background-size: 24px auto; }
-    .site-content .featured article.post .entry-thumbnail.has-post-thumbnail {
-      background-size: cover; }
+  .site-content .featured article.post.has-post-thumbnail .entry-thumbnail {
+    background-size: cover; }
   .site-content .featured article.post .entry-meta {
     position: absolute;
     margin: 28px 0 0 0;
+    padding: 0 0 0 28px;
     color: #191e23; }
     .site-content .featured article.post .entry-meta a {
       color: #191e23; }
