@@ -454,6 +454,10 @@ body.home .widget {
 		max-width: $theme-width;
 	}
 
+	> .wp-block-image:not( .alignfull ):not( .alignwide ) {
+		padding: 0 $responsive-padding;
+	}
+
 	p a {
 		text-decoration: underline;
 		font-weight: 700;

@@ -283,6 +283,8 @@ body.home .widget {
     padding: 0 12px; }
   .site-content article > ul:not(.alignfull):not(.alignwide) {
     max-width: 720px; }
+  .site-content article > .wp-block-image:not(.alignfull):not(.alignwide) {
+    padding: 0 20px; }
   .site-content article p a {
     text-decoration: underline;
     font-weight: 700; }
