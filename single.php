@@ -12,38 +12,45 @@
 
 		?>
 		<div class="navigation">
-			<h4><strong>Previous</strong> <span class="sep">&</span> <strong>Next</strong></h4>
 			<div class="thumbnails">
-				<?php
-				$prevPost = get_previous_post( true );
-				if ( $prevPost ) {
-					$args = array(
-						'posts_per_page' => 1,
-						'include' => $prevPost->ID
-					);
-					$prevPost = get_posts( $args );
-					foreach ( $prevPost as $post ) {
-						setup_postdata( $post );
-						get_template_part( 'template-parts/content', 'thumbnail' );
-						wp_reset_postdata();
-					}
-				}
+				<div class="previous">
+					<?php
+					$prevPost = get_previous_post( true );
+					if ( $prevPost ) {
+						echo '<h4>Previous</h4>';
 
-				$nextPost = get_next_post( true );
-				if( $nextPost ) {
-					$args = array(
-						'posts_per_page' => 1,
-						'include' => $nextPost->ID
-					);
-					$nextPost = get_posts( $args );
-					foreach ( $nextPost as $post ) {
-						setup_postdata( $post );
-						get_template_part( 'template-parts/content', 'thumbnail' );
-						wp_reset_postdata();
+						$args = array(
+							'posts_per_page' => 1,
+							'include' => $prevPost->ID
+						);
+						$prevPost = get_posts( $args );
+						foreach ( $prevPost as $post ) {
+							setup_postdata( $post );
+							get_template_part( 'template-parts/content', 'thumbnail' );
+							wp_reset_postdata();
+						}
 					}
-				}
-				?>
-				<div class="column-spacer"></div>
+					?>
+				</div>
+				<div class="next">
+					<?php
+					$nextPost = get_next_post( true );
+					if( $nextPost ) {
+						echo '<h4>Next</h4>';
+
+						$args = array(
+							'posts_per_page' => 1,
+							'include' => $nextPost->ID
+						);
+						$nextPost = get_posts( $args );
+						foreach ( $nextPost as $post ) {
+							setup_postdata( $post );
+							get_template_part( 'template-parts/content', 'thumbnail' );
+							wp_reset_postdata();
+						}
+					}
+					?>
+				</div>
 			</div>
 		</div>
 		<?php
