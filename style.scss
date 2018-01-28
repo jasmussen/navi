@@ -249,14 +249,15 @@ header.site-header {
 		margin: 0 0 0 $text-margin;
 	}
 
-	.main-navigation .menu ul {
+	.main-navigation .menu {
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 
-	.main-navigation .menu ul li {
-		display: inline;
+	.main-navigation .menu li {
+		display: inline-block;
+		float: left;
 	}
 
 	.main-navigation a {
@@ -265,6 +266,22 @@ header.site-header {
 
 	.menu-toggle {
 		display: none;
+	}
+
+	// Special random item
+	a[href="?random=1"] {
+		fill: $dark-gray-500;
+		text-indent: 100%;
+		width: 24px + 28px;
+		overflow: hidden;
+		background-size: 24px 24px;
+		background-repeat: no-repeat;
+		background-position: right center;
+		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI0IDI0OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGw6IzU1NUQ2Njt9PC9zdHlsZT48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTQsNHYyaDIuNmwtMy4yLDMuMmwxLjQsMS40TDE4LDcuNFYxMGgyVjRIMTR6IE0xOCwxNi42TDUuNyw0LjNMNC4zLDUuN0wxNi42LDE4SDE0djJoNnYtNmgtMlYxNi42eiBNNC4zLDE4LjNsMS40LDEuNGw0LjktNC45bC0xLjQtMS40TDQuMywxOC4zeiIvPjwvc3ZnPg==);
+
+		&:hover {
+			background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI0IDI0OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGw6IzFGMjMyODt9PC9zdHlsZT48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTQsNHYyaDIuNmwtMy4yLDMuMmwxLjQsMS40TDE4LDcuNFYxMGgyVjRIMTR6IE0xOCwxNi42TDUuNyw0LjNMNC4zLDUuN0wxNi42LDE4SDE0djJoNnYtNmgtMlYxNi42eiBNNC4zLDE4LjNsMS40LDEuNGw0LjktNC45bC0xLjQtMS40TDQuMywxOC4zeiIvPjwvc3ZnPg==);
+		}
 	}
 }
 
@@ -830,5 +847,15 @@ $column-width: 400px;
 		a {
 			color: $dark-gray-900;
 		}
+	}
+
+	article.post .entry-excerpt {
+		display: block;
+		margin: 0;
+		padding: 0;
+		background: $white;
+		color: $dark-gray-900;
+		text-decoration: none;
+		padding: $text-margin-small $text-margin-small 0 $text-margin-small;
 	}
 }

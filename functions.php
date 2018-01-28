@@ -157,3 +157,12 @@ function is_first_post() {
 
 	return FALSE;
 }
+
+/**
+ * Excerpts
+ */
+
+function navi_custom_excerpt_length( $length ) {
+	return 38;
+}
+add_filter( 'excerpt_length', 'navi_custom_excerpt_length', 999 );
