@@ -48,7 +48,8 @@ $light-gray-100: #f8f9f9;
 $white: #fff;
 
 $shadow-invisible: 0 0px 0px rgba( 0,0,0,0 );
-$shadow-big: 0 10px 40px rgba( 0,0,0, .2 );
+$shadow-big: 0 10px 30px rgba( 0,0,0, .2 );
+$shadow-responsive-footer: 0 0 20px rgba( 0,0,0, .2 );
 
 
 /**
@@ -137,7 +138,7 @@ header.site-header {
 	top: 0;
 	right: 0;
 	height: $text-margin;
-	background: $light-gray-100;
+	background: $light-gray-200;
 	font-size: $fonts-small;
 	display: flex;
 	flex-direction: row;
@@ -202,14 +203,19 @@ header.site-header {
 	}
 }
 
+@media only screen and ( max-width: 782px ) {
 
-/* Responsive, fixme */
-@media only screen and ( max-width: 640px ) {
+	body.logged-in {
+		padding-top: 0;
+	}
 
-	header.site-header {
+	header.site-header,
+	body.logged-in header.site-header {
 		top: auto;
 		bottom: 0;
-		box-shadow: $shadow-big;
+		left: -#{ $text-margin - $responsive-padding };
+		right: -#{ $text-margin - $responsive-padding };
+		box-shadow: $shadow-responsive-footer;
 		position: fixed;
 		border-bottom: none;
 	}
@@ -386,6 +392,7 @@ body.home .widget {
 		max-width: $theme-width;
 		margin-top: $text-margin;
 		margin-bottom: $text-margin;
+		padding: 0 #{ $responsive-padding - 8px };
 	}
 
 	p a {
@@ -542,29 +549,25 @@ hr.wp-block-separator {
 	overflow: hidden;
 
 	h4 {
-		margin-bottom: $text-margin;
+		margin: $text-margin 0 $text-margin $text-margin-small;
 		position: relative;
 	}
 
-	span.sep {
-		display: none;
-	}
-
-	strong + span + strong {
-		position: absolute;
-		left: calc( 50% + #{ $text-margin-small } );
-	}
-
 	.thumbnails {
-		column-count: 2;
-		column-gap: 0;
 		margin: 0 -$text-margin-small;
-		min-height: 300px;
+	}
 
-		.nav-previous section,
-		.nav-next section {
-			height: 180px;
-		}
+	.previous,
+	.next {
+		width: 50%;
+	}
+
+	.previous {
+		float: left;
+	}
+
+	.next {
+		float: right;
 	}
 }
 
@@ -612,7 +615,7 @@ body.home .widget {
 	}
 
 	> span.current {
-		background: $light-gray-100;
+		background: $light-gray-200;
 	}
 
 	> a:hover {
@@ -680,7 +683,7 @@ $column-width: 400px;
 
 .thumbnails article.post {
 	section {
-		background: $light-gray-100;
+		background: $light-gray-200;
 		padding: 0;
 		position: relative;
 		overflow: hidden;
@@ -755,8 +758,18 @@ $column-width: 400px;
 
 	article.post {
 		padding: 35% $text-margin-small 0;
-		background-size: cover;
 		background-position: center center;
+		background-color: $light-gray-200;
+		background-repeat: no-repeat;
+
+		// No thumbnail
+		background-image: url( 'assets/pattern.svg' );
+		background-size: 24px auto;
+
+		// With thumbnail
+		&.has-post-thumbnail {
+			background-size: cover;
+		}
 	}
 
 	article.post h3 {
