@@ -249,7 +249,8 @@ header.site-header {
 		margin: 0 0 0 $text-margin;
 	}
 
-	.main-navigation .menu {
+	.main-navigation .menu,
+	.main-navigation .menu ul {
 		margin: 0;
 		padding: 0;
 		list-style: none;
@@ -405,11 +406,14 @@ body ::-webkit-scrollbar-thumb {
 
 .alignfull {
 	width: 100%;
-
 }
 
 .alignwide {
-	width: 75%;
+	width: 100%;
+
+	@include break-large {
+		width: 75%;
+	}
 }
 
 
@@ -450,8 +454,9 @@ body.home .widget {
 		padding: 0 #{ $responsive-padding - 8px };
 	}
 
-	> ul:not( .alignfull ):not( .alignwide ) {
+	> ul:not( .alignfull ):not( .alignwide ):not( .wp-block-gallery ) {
 		max-width: $theme-width;
+		padding: 0 #{ $responsive-padding - 8px } 0 #{ $responsive-padding + $text-margin-small };
 	}
 
 	> .wp-block-image:not( .alignfull ):not( .alignwide ) {
