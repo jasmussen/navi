@@ -902,6 +902,19 @@ $column-width: 400px;
 		&.has-post-thumbnail .entry-thumbnail {
 			background-size: cover;
 		}
+
+		&.has-post-thumbnail:before {
+			content: '';
+			display: block;
+			background: rgba( 0,0,0,.05 );
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 1;
+			pointer-events: none;
+		}
 	}
 
 	article.post .entry-meta {

@@ -606,6 +606,17 @@ body.home .widget p {
     background-size: 24px auto; }
   .site-content .featured article.post.has-post-thumbnail .entry-thumbnail {
     background-size: cover; }
+  .site-content .featured article.post.has-post-thumbnail:before {
+    content: '';
+    display: block;
+    background: rgba(0, 0, 0, 0.05);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none; }
   .site-content .featured article.post .entry-meta {
     position: absolute;
     margin: 28px 0 0 0;
