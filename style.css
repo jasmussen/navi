@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 Theme Name: Navi
 Theme URI:
@@ -144,6 +145,9 @@ header.site-header {
     padding: 0 0 0 28px; }
   header.site-header .menu-toggle {
     display: none; }
+  header.site-header a[href="?random"],
+  header.site-header a[href="/?random"],
+  header.site-header a[href="/?random=1"],
   header.site-header a[href="?random=1"] {
     fill: #555d66;
     text-indent: 100%;
@@ -153,6 +157,9 @@ header.site-header {
     background-repeat: no-repeat;
     background-position: right center;
     background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI0IDI0OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGw6IzU1NUQ2Njt9PC9zdHlsZT48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTQsNHYyaDIuNmwtMy4yLDMuMmwxLjQsMS40TDE4LDcuNFYxMGgyVjRIMTR6IE0xOCwxNi42TDUuNyw0LjNMNC4zLDUuN0wxNi42LDE4SDE0djJoNnYtNmgtMlYxNi42eiBNNC4zLDE4LjNsMS40LDEuNGw0LjktNC45bC0xLjQtMS40TDQuMywxOC4zeiIvPjwvc3ZnPg==); }
+    header.site-header a[href="?random"]:hover,
+    header.site-header a[href="/?random"]:hover,
+    header.site-header a[href="/?random=1"]:hover,
     header.site-header a[href="?random=1"]:hover {
       background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI0IDI0OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGw6IzFGMjMyODt9PC9zdHlsZT48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTQsNHYyaDIuNmwtMy4yLDMuMmwxLjQsMS40TDE4LDcuNFYxMGgyVjRIMTR6IE0xOCwxNi42TDUuNyw0LjNMNC4zLDUuN0wxNi42LDE4SDE0djJoNnYtNmgtMlYxNi42eiBNNC4zLDE4LjNsMS40LDEuNGw0LjktNC45bC0xLjQtMS40TDQuMywxOC4zeiIvPjwvc3ZnPg==); }
 
@@ -204,13 +211,13 @@ input[type="submit"] {
   white-space: nowrap;
   font-family: "Noto Serif", serif; }
 
-input[type="text"],
+input,
 textarea {
   border: 1px solid #e2e4e7;
   padding: 1em;
   font-size: 13px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif; }
-  input[type="text"]:focus,
+  input:focus,
   textarea:focus {
     border: 1px solid #555d66;
     outline: none; }
@@ -275,8 +282,12 @@ body.home .widget {
 .site-content article {
   position: relative;
   padding: 56px 0; }
+  .site-content article > .contact-form,
+  .site-content article > .rating,
+  .site-content article > pre,
   .site-content article > p,
   .site-content article > blockquote {
+    display: block;
     max-width: 720px;
     padding: 0 20px;
     margin-top: 56px;
@@ -293,6 +304,8 @@ body.home .widget {
   .site-content article p a {
     text-decoration: underline;
     font-weight: 700; }
+  .site-content article pre {
+    overflow: auto; }
   .site-content article a:hover {
     text-decoration: none; }
   .site-content article > h1,
@@ -316,15 +329,12 @@ body.home .widget {
  * Gallery
  */
 .site-content article > ul.custom-gallery {
-  column-count: 1;
+  column-count: 2;
   column-gap: 0;
   margin-bottom: 200px;
   padding: 0;
   display: block; }
-  @media (min-width: 600px) {
-    .site-content article > ul.custom-gallery {
-      column-count: 2; } }
-  @media (min-width: 960px) {
+  @media (min-width: 782px) {
     .site-content article > ul.custom-gallery {
       column-count: 3; } }
   @media (min-width: 1440px) {
@@ -336,6 +346,14 @@ body.home .widget {
     margin: 0; }
   .site-content article > ul.custom-gallery .blocks-gallery-item figure {
     height: auto; }
+
+.gallery {
+  padding: 0 20px;
+  overflow: hidden; }
+  .gallery figure {
+    margin: 0;
+    float: left;
+    width: 33%; }
 
 /**
  * Blocks
@@ -404,35 +422,29 @@ hr.wp-block-separator {
     height: 100%; }
 
 /**
- * Comments
- */
-.comments-area .logged-in-as {
-  font-size: 13px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
-  color: #555d66; }
-  .comments-area .logged-in-as a {
-    color: #555d66; }
-.comments-area .comment-form-comment {
-  margin: 1em 0; }
-  .comments-area .comment-form-comment label {
-    display: block; }
-  .comments-area .comment-form-comment textarea {
-    width: 100%; }
-
-/**
  * Post Navigation
  */
 .navigation {
   margin-bottom: 56px;
   overflow: hidden; }
   .navigation h4 {
-    margin: 56px 0 56px 28px;
-    position: relative; }
+    position: relative;
+    margin: 0 0 0 28px; }
+    @media (min-width: 600px) {
+      .navigation h4 {
+        margin: 56px 0 56px 28px; } }
   .navigation .thumbnails {
-    margin: -28px; }
+    margin: 0 0 -28px; }
+    @media (min-width: 600px) {
+      .navigation .thumbnails {
+        margin: -28px; } }
   .navigation .nav-previous,
   .navigation .nav-next {
-    width: 50%; }
+    width: 100%; }
+    @media (min-width: 600px) {
+      .navigation .nav-previous,
+      .navigation .nav-next {
+        width: 50%; } }
   .navigation .nav-previous {
     float: left; }
   .navigation .nav-next {
@@ -456,8 +468,7 @@ body.home .widget p {
   justify-content: center;
   padding: 56px 0; }
   .nav-links .screen-reader-text {
-    display: inline-block;
-    margin-right: 4px; }
+    display: none; }
   .nav-links > a,
   .nav-links > span {
     display: inline-block;
@@ -473,6 +484,10 @@ body.home .widget p {
   .nav-links > a:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     background: #fff; }
+  .nav-links .next:before {
+    content: '→'; }
+  .nav-links .prev:before {
+    content: '←'; }
 
 /**
  * Post columns
@@ -492,6 +507,9 @@ body.home .widget p {
 .thumbnails article.post {
   margin: 0;
   padding: 14px 28px 42px 28px; }
+  .posts article.post h3,
+  .thumbnails article.post h3 {
+    font-size: 12.5pt; }
   .posts article.post section:before,
   .thumbnails article.post section:before {
     content: '';
@@ -613,5 +631,63 @@ body.home .widget p {
       text-decoration: none; }
     .site-content .featured article.post .entry-excerpt a:hover {
       text-decoration: underline; }
+
+/**
+ * Comments
+ */
+.comments-area {
+  clear: both; }
+  .comments-area .logged-in-as {
+    font-size: 13px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+    color: #555d66; }
+    .comments-area .logged-in-as a {
+      color: #555d66; }
+  .comments-area .comment-respond {
+    margin-top: 56px; }
+  .comments-area .comment-form-comment {
+    margin: 1em 0; }
+    .comments-area .comment-form-comment label {
+      display: block; }
+    .comments-area .comment-form-comment textarea {
+      width: 100%; }
+  .comments-area .comment-list,
+  .comments-area .comment-list .children {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+  .comments-area .comment-list .children {
+    margin-left: 56px; }
+  .comments-area .comment-author {
+    position: relative;
+    z-index: 2; }
+    .comments-area .comment-author .avatar {
+      float: left;
+      border-radius: 50%;
+      margin-right: 8px; }
+    .comments-area .comment-author .says {
+      display: none; }
+  .comments-area .comment-body {
+    padding: 28px 0; }
+  .comments-area .comment-metadata {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+    font-size: 13px; }
+    .comments-area .comment-metadata a {
+      color: #555d66;
+      text-decoration: none;
+      margin-right: 8px; }
+    .comments-area .comment-metadata a:hover {
+      text-decoration: underline; }
+  .comments-area .comment-content p,
+  .comments-area .comment-content ul,
+  .comments-area .comment-content ol {
+    margin: 28px 0; }
+  .comments-area .comment-reply-link {
+    position: relative; }
+  .comments-area .no-comments,
+  .comments-area .comment-awaiting-moderation {
+    font-style: italic; }
+  .comments-area .form-submit {
+    text-align: right; }
 
 /*# sourceMappingURL=style.css.map */

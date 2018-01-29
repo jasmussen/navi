@@ -270,6 +270,9 @@ header.site-header {
 	}
 
 	// Special random item
+	a[href="?random"],
+	a[href="/?random"],
+	a[href="/?random=1"],
 	a[href="?random=1"] {
 		fill: $dark-gray-500;
 		text-indent: 100%;
@@ -347,7 +350,7 @@ input[type="submit"] {
 	font-family: $fonts-serif;
 }
 
-input[type="text"],
+input,
 textarea {
 	border: 1px solid $light-gray-500;
 	padding: 1em;
@@ -440,8 +443,12 @@ body.home .widget {
 	position: relative;
 	padding: $text-margin 0;
 
+	> .contact-form,
+	> .rating,
+	> pre,
 	> p,
 	> blockquote {
+		display: block;
 		max-width: $theme-width;
 		padding: 0 $responsive-padding;
 		margin-top: $text-margin;
@@ -466,6 +473,10 @@ body.home .widget {
 	p a {
 		text-decoration: underline;
 		font-weight: 700;
+	}
+
+	pre {
+		overflow: auto;
 	}
 
 	a:hover {
@@ -506,17 +517,13 @@ body.home .widget {
 
 // To use, apply `custom-gallery` as an additional CSS class to your Gallery block under Block settings
 .site-content article > ul.custom-gallery {
-	column-count: 1;
+	column-count: 2;
 	column-gap: 0;
 	margin-bottom: 200px;
 	padding: 0;
 	display: block;
 
-	@include break-small() {
-		column-count: 2;
-	}
-
-	@include break-large() {
+	@include break-medium() {
 		column-count: 3;
 	}
 
@@ -533,6 +540,18 @@ body.home .widget {
 
 	.blocks-gallery-item figure {
 		height: auto;
+	}
+}
+
+// Legacy galleries
+.gallery {
+	padding: 0 $responsive-padding;
+	overflow: hidden;
+
+	figure {
+		margin: 0;
+		float: left;
+		width: 33%;
 	}
 }
 
@@ -617,35 +636,6 @@ hr.wp-block-separator {
 
 
 /**
- * Comments
- */
-
-.comments-area {
-	.logged-in-as {
-		font-size: $fonts-small;
-		font-family: $fonts-system;
-		color: $dark-gray-500;
-
-		a {
-			color: $dark-gray-500;
-		}
-	}
-
-	.comment-form-comment {
-		margin: 1em 0;
-
-		label {
-			display: block;
-		}
-
-		textarea {
-			width: 100%;
-		}
-	}
-}
-
-
-/**
  * Post Navigation
  */
 
@@ -654,17 +644,29 @@ hr.wp-block-separator {
 	overflow: hidden;
 
 	h4 {
-		margin: $text-margin 0 $text-margin $text-margin-small;
 		position: relative;
+		margin: 0 0 0 $text-margin-small;
+
+		@include break-small {
+			margin: $text-margin 0 $text-margin $text-margin-small;
+		}
 	}
 
 	.thumbnails {
-		margin: 0 -$text-margin-small;
+		margin: 0 0 0 -$text-margin-small;
+
+		@include break-small {
+			margin: 0 -$text-margin-small;
+		}
 	}
 
 	.nav-previous,
 	.nav-next {
-		width: 50%;
+		width: 100%;
+
+		@include break-small {
+			width: 50%;
+		}
 	}
 
 	.nav-previous {
@@ -704,8 +706,7 @@ body.home .widget {
 	padding: $text-margin 0;
 
 	.screen-reader-text {
-		display: inline-block;
-		margin-right: 4px;
+		display: none;
 	}
 
 	> a,
@@ -728,6 +729,15 @@ body.home .widget {
 		box-shadow: $shadow-big;
 		background: $white;
 	}
+
+	.next:before {
+		content: '→';
+	}
+
+	.prev:before {
+		content: '←';
+	}
+
 }
 
 
@@ -756,6 +766,10 @@ $column-width: 400px;
 .thumbnails article.post {
 	margin: 0;
 	padding: #{ $text-margin-small / 2 } $text-margin-small #{ $text-margin-small * 1.5 } $text-margin-small;
+
+	h3 {
+		font-size: 12.5pt;
+	}
 
 	section:before {
 		content: '';
@@ -925,5 +939,110 @@ $column-width: 400px;
 		a:hover {
 			text-decoration: underline;
 		}
+	}
+}
+
+
+/**
+ * Comments
+ */
+
+
+ .comments-area {
+	 clear: both;
+
+	 .logged-in-as {
+  		font-size: $fonts-small;
+  		font-family: $fonts-system;
+  		color: $dark-gray-500;
+
+  		a {
+  			color: $dark-gray-500;
+  		}
+  	}
+
+	.comment-respond {
+		margin-top: $text-margin;
+	}
+
+  	.comment-form-comment {
+  		margin: 1em 0;
+
+  		label {
+  			display: block;
+  		}
+
+  		textarea {
+  			width: 100%;
+  		}
+  	}
+
+	.comment-list,
+	.comment-list .children {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.comment-list .children {
+		margin-left: $text-margin;
+	}
+
+	.comment-author {
+		position: relative;
+		z-index: 2;
+
+		.avatar {
+			float: left;
+			border-radius: 50%;
+			margin-right: 8px;
+		}
+
+		.says {
+			display: none;
+		}
+	}
+
+	.comment-body {
+		padding: $text-margin-small 0;
+	}
+
+	.comment-metadata {
+		font-family: $fonts-system;
+		font-size: $fonts-small;
+
+		a {
+			color: $dark-gray-500;
+			text-decoration: none;
+			margin-right: 8px;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.comment-content {
+		p,
+		ul,
+		ol {
+			margin: $text-margin-small 0;
+		}
+	}
+
+	.comment-reply-link {
+		position: relative;
+	}
+
+	.no-comments,
+	.comment-awaiting-moderation {
+		font-style: italic;
+	}
+
+	.comments-pagination {
+	}
+
+	.form-submit {
+		text-align: right;
 	}
 }

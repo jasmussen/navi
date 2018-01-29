@@ -41,7 +41,7 @@
 
 	endif;
 
-	// Widgets below, and reset pagination
+	// Widgets below
 	if ( is_front_page() && !is_paged() ) {
 		dynamic_sidebar( 'Index, Below' );
 	}
@@ -49,10 +49,11 @@
 	// Pagination
 	if ( is_front_page() && !is_paged() ) { ?>
 	<div class="nav-links">
-		<a class="nav-archive" href="/?paged=2"><span class="screen-reader-text">Archive</span></a>
+		<a class="nav-archive" href="/?paged=2">Archive</a>
 	</div>
 	<?php
 	} else {
+		wp_reset_postdata();
 		the_posts_pagination(
 			array(
 				'prev_text'          => '<span class="screen-reader-text">' . __( 'Previous page', 'navi' ) . '</span>',
