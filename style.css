@@ -282,7 +282,7 @@ body.home .widget {
 .site-content article {
   position: relative;
   padding: 56px 0; }
-  .site-content article > .contact-form,
+  .site-content article .contact-form,
   .site-content article > .rating,
   .site-content article > pre,
   .site-content article > p,

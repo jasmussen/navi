@@ -166,11 +166,3 @@ function navi_custom_excerpt_length( $length ) {
 	return 38;
 }
 add_filter( 'excerpt_length', 'navi_custom_excerpt_length', 999 );
-
-
-function navi_query( $query ) {
-	if ( $query->is_home() && $query->is_main_query() && !is_admin() && $query->is_paged() ) {
-		$query->set( 'posts_per_page', 16 );
-	}
-}
-add_action( 'pre_get_posts', 'navi_query' );

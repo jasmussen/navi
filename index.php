@@ -53,7 +53,6 @@
 	</div>
 	<?php
 	} else {
-		wp_reset_postdata();
 		the_posts_pagination(
 			array(
 				'prev_text'          => '<span class="screen-reader-text">' . __( 'Previous page', 'navi' ) . '</span>',
