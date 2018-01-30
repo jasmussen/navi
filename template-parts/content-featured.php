@@ -5,8 +5,4 @@
 			<h3><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
 			<?php the_excerpt(); ?>
 		</div>
-
-		<div class="entry-meta">
-			<?php navi_posted_on(); ?>
-		</div>
 </article>

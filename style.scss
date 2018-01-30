@@ -199,7 +199,6 @@ header.site-header {
 	box-shadow: $shadow-responsive-footer;
 
 	@include break-medium {
-		position: absolute;
 		left: 0;
 		top: 0;
 		right: 0;
@@ -840,7 +839,8 @@ $column-width: 400px;
 		margin: 0;
 	}
 
-	h3 {
+	h3,
+	p {
 		position: relative;
 		z-index: 1;
 	}

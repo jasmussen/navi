@@ -15,7 +15,7 @@
 			<div class="thumbnails">
 				<div class="nav-previous">
 					<?php
-					$prevPost = get_previous_post( true );
+					$prevPost = get_previous_post();
 					if ( $prevPost ) {
 						echo '<h4>Previous</h4>';
 
@@ -34,7 +34,7 @@
 				</div>
 				<div class="nav-next">
 					<?php
-					$nextPost = get_next_post( true );
+					$nextPost = get_next_post();
 					if( $nextPost ) {
 						echo '<h4>Next</h4>';
 
