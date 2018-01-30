@@ -180,8 +180,8 @@ body {
 	}
 }
 
-header.site-header {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+.site-header {
+	font-family: $fonts-system;
 	font-weight: 500;
 	z-index: 10;
 	height: $text-margin;
@@ -190,7 +190,7 @@ header.site-header {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-	padding: 0 $text-margin;
+	padding: 0 #{ $text-margin - $text-margin-small };
 
 	position: fixed;
 	bottom: 0;
@@ -204,6 +204,7 @@ header.site-header {
 		right: 0;
 		bottom: auto;
 		box-shadow: none;
+
 		body.logged-in & {
 			top: 32px;
 		}
@@ -218,6 +219,7 @@ header.site-header {
 		color: $dark-gray-500;
 		text-align: center;
 		text-decoration: none;
+		padding: 0 #{ $text-margin-small / 2 };
 	}
 
 	ul li.active a,
@@ -260,10 +262,6 @@ header.site-header {
 		float: left;
 	}
 
-	.main-navigation a {
-		padding: 0 0 0 $text-margin-small;
-	}
-
 	.menu-toggle {
 		display: none;
 	}
@@ -274,12 +272,12 @@ header.site-header {
 	a[href="/?random=1"],
 	a[href="?random=1"] {
 		fill: $dark-gray-500;
-		text-indent: 100%;
+		text-indent: 200%;
 		width: 24px + 28px;
 		overflow: hidden;
 		background-size: 24px 24px;
 		background-repeat: no-repeat;
-		background-position: right center;
+		background-position: center center;
 		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI0IDI0OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGw6IzU1NUQ2Njt9PC9zdHlsZT48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTQsNHYyaDIuNmwtMy4yLDMuMmwxLjQsMS40TDE4LDcuNFYxMGgyVjRIMTR6IE0xOCwxNi42TDUuNyw0LjNMNC4zLDUuN0wxNi42LDE4SDE0djJoNnYtNmgtMlYxNi42eiBNNC4zLDE4LjNsMS40LDEuNGw0LjktNC45bC0xLjQtMS40TDQuMywxOC4zeiIvPjwvc3ZnPg==);
 
 		&:hover {
@@ -310,9 +308,9 @@ header.site-header {
  */
 
 .entry-meta {
-	font-family: $fonts-system;
 	padding: 0 $responsive-padding;
 	font-family: $fonts-system;
+	font-weight: 500;
 	font-size: $fonts-small;
 	color: $dark-gray-500;
 	margin-bottom: $text-margin;
@@ -355,6 +353,7 @@ textarea {
 	padding: 1em;
 	font-size: $fonts-small;
 	font-family: $fonts-system;
+	font-weight: 500;
 
 	&:focus {
 		border: 1px solid $dark-gray-500;
@@ -365,6 +364,7 @@ textarea {
 label {
 	font-size: $fonts-small;
 	font-family: $fonts-system;
+	font-weight: 500;
 	color: $light-gray-900;
 }
 
@@ -639,24 +639,12 @@ hr.wp-block-separator {
  */
 
 .navigation {
-	margin-bottom: $text-margin;
+	margin: 0 auto $text-margin auto;
 	overflow: hidden;
 
-	h4 {
-		position: relative;
-		margin: 0 0 0 $text-margin-small;
-
-		@include break-small {
-			margin: $text-margin 0 $text-margin $text-margin-small;
-		}
-	}
-
 	.thumbnails {
-		margin: 0 0 0 -$text-margin-small;
-
-		@include break-small {
-			margin: 0 -$text-margin-small;
-		}
+		padding-top: $text-margin-small;
+		margin: 0 -$text-margin-small;
 	}
 
 	.nav-previous,
@@ -713,6 +701,7 @@ body.home .widget {
 		display: inline-block;
 		padding: 1em 2em;
 		font-family: $fonts-system;
+		font-weight: 500;
 		font-size: $fonts-small;
 		color: $dark-gray-500;
 		text-decoration: none;
@@ -761,12 +750,23 @@ $column-width: 400px;
 	}
 }
 
-.posts article.post,
-.thumbnails article.post {
+
+/**
+ * Thumbnail
+ */
+
+.thumbnail {
 	margin: 0;
 	padding: #{ $text-margin-small / 2 } $text-margin-small #{ $text-margin-small * 1.5 } $text-margin-small;
 
 	h3 {
+		font-family: $fonts-system;
+		font-size: $fonts-small;
+		font-weight: bold;
+		margin: 0 0 1em 0;
+	}
+
+	h4 {
 		font-size: 12.5pt;
 	}
 
@@ -793,9 +793,7 @@ $column-width: 400px;
 			background: rgba( 0,0,0, .5 );
 		}
 	}
-}
 
-.thumbnails article.post {
 	section {
 		background: $light-gray-200;
 		padding: 0;
@@ -822,7 +820,7 @@ $column-width: 400px;
 		background-position: center center;
 	}
 
-	section > a:hover h3 {
+	section > a:hover h4 {
 		text-decoration: underline;
 	}
 
@@ -840,26 +838,11 @@ $column-width: 400px;
 	}
 
 	h3,
+	h4,
 	p {
 		position: relative;
 		z-index: 1;
 	}
-
-	h3 svg {
-		width: 18px;
-		height: 18px;
-		position: absolute;
-		top: 8px;
-		right: 0;
-	}
-}
-
-.navigation .thumbnails article.post section:first-child:before {
-	padding-top: 0;
-}
-
-.navigation .thumbnails .column-spacer {
-	min-height: 210px;
 }
 
 
@@ -967,6 +950,7 @@ $column-width: 400px;
 	 .logged-in-as {
   		font-size: $fonts-small;
   		font-family: $fonts-system;
+		font-weight: 500;
   		color: $dark-gray-500;
 
   		a {
@@ -1022,6 +1006,7 @@ $column-width: 400px;
 
 	.comment-metadata {
 		font-family: $fonts-system;
+		font-weight: 500;
 		font-size: $fonts-small;
 
 		a {

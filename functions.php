@@ -158,26 +158,3 @@ function is_first_post() {
 
 	return FALSE;
 }
-
-/**
- * Excerpts
- */
-
-function navi_custom_excerpt_length( $length ) {
-	return 28;
-}
-add_filter( 'excerpt_length', 'navi_custom_excerpt_length', 999 );
-
-function get_navi_excerpt( $limit ) {
-	$excerpt = explode( ' ', get_the_excerpt(), $limit );
-	if ( count( $excerpt ) >= $limit ) {
-		array_pop($excerpt);
-		$excerpt = implode(" ", $excerpt) . '...';
-	} else {
-		$excerpt = implode(" ", $excerpt);
-	}
-
-	$excerpt = preg_replace('`\[[^\]]*\]`', '', $excerpt);
-
-	return $excerpt;
-}

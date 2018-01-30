@@ -3,6 +3,6 @@
 
 		<div class="entry-excerpt">
 			<h3><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
-			<?php the_excerpt(); ?>
+			<?php if ( has_excerpt() ) { the_excerpt(); } ?>
 		</div>
 </article>
