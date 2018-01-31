@@ -156,6 +156,11 @@ body ::-webkit-scrollbar-thumb {
       margin-top: 32px;
       margin-bottom: 32px; }
 
+@media only screen and (min-width: 1800px) {
+  .site-content .alignwide,
+  .site-content .alignfull {
+    margin-left: auto;
+    margin-right: auto; } }
 /**
  * Navigation
  */

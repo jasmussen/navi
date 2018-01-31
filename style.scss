@@ -295,6 +295,15 @@ body ::-webkit-scrollbar-thumb {
 	}
 }
 
+@media only screen and ( min-width: $theme-width-fullwide )  {
+	.site-content .alignwide,
+	.site-content .alignfull {
+		margin-left: auto;
+		margin-right: auto;
+
+	}
+}
+
 
 /**
  * Navigation
