@@ -98,6 +98,8 @@ body ::-webkit-scrollbar-thumb {
     max-width: 720px;
     margin-left: auto;
     margin-right: auto; }
+  .site-content > * > span {
+    display: block; }
   .site-content .alignwide,
   .site-content .alignfull {
     max-width: 1800px;
@@ -114,7 +116,8 @@ body ::-webkit-scrollbar-thumb {
       margin-right: auto; } }
   .site-content > .post,
   .site-content > .page {
-    position: relative; }
+    position: relative;
+    word-wrap: break-word; }
     .site-content > .post pre,
     .site-content > .page pre {
       overflow: auto; }
@@ -128,22 +131,55 @@ body ::-webkit-scrollbar-thumb {
     .site-content > .post > h1,
     .site-content > .post > h2,
     .site-content > .post > h3,
+    .site-content > .post > h4,
+    .site-content > .post > h5,
+    .site-content > .post > h6,
     .site-content > .page > h1,
     .site-content > .page > h2,
-    .site-content > .page > h3 {
-      max-width: 720px;
-      margin: 32px auto;
-      font-size: 36pt;
-      line-height: 1.5; }
+    .site-content > .page > h3,
+    .site-content > .page > h4,
+    .site-content > .page > h5,
+    .site-content > .page > h6 {
+      margin: 48px auto 32px auto;
+      line-height: 1.4; }
+    .site-content > .post > h1,
+    .site-content > .page > h1 {
+      font-size: 2em; }
+      @media (min-width: 600px) {
+        .site-content > .post > h1,
+        .site-content > .page > h1 {
+          font-size: 3em; } }
     .site-content > .post > h2,
     .site-content > .page > h2 {
-      font-size: 32pt; }
+      font-size: 1.6em; }
+      @media (min-width: 600px) {
+        .site-content > .post > h2,
+        .site-content > .page > h2 {
+          font-size: 2.2em; } }
     .site-content > .post > h3,
     .site-content > .page > h3 {
-      font-size: 28pt; }
+      font-size: 1.4em; }
+      @media (min-width: 600px) {
+        .site-content > .post > h3,
+        .site-content > .page > h3 {
+          font-size: 1.8em; } }
     .site-content > .post > h4,
     .site-content > .page > h4 {
-      font-size: 100%; }
+      font-size: 1.2em; }
+      @media (min-width: 600px) {
+        .site-content > .post > h4,
+        .site-content > .page > h4 {
+          font-size: 1.4em; } }
+    .site-content > .post > h5,
+    .site-content > .page > h5 {
+      font-size: 1.1em; }
+      @media (min-width: 600px) {
+        .site-content > .post > h5,
+        .site-content > .page > h5 {
+          font-size: 1.2em; } }
+    .site-content > .post > h6,
+    .site-content > .page > h6 {
+      font-size: 1em; }
     .site-content > .post > p:first-of-type,
     .site-content > .page > p:first-of-type {
       margin-top: 0; }
@@ -335,7 +371,8 @@ label {
     float: left;
     width: 33%; }
 .site-content .wp-block-cover-image {
-  margin: 32px auto; }
+  margin-top: 32px;
+  margin-bottom: 32px; }
 .site-content hr,
 .site-content hr.wp-block-separator {
   border: none;
@@ -396,7 +433,13 @@ label {
  */
 .site-content > .navigation {
   overflow: hidden;
-  margin-bottom: 96px; }
+  margin-bottom: 96px;
+  margin-left: -16px;
+  margin-right: -16px; }
+  @media (min-width: 600px) {
+    .site-content > .navigation {
+      margin-left: 0;
+      margin-right: 0; } }
   .site-content > .navigation .thumbnails {
     padding-top: 32px;
     max-width: 784px; }
@@ -447,7 +490,7 @@ label {
  * Archive column layout
  */
 .thumbnails.posts {
-  margin: 32px auto;
+  margin: -16px auto 32px auto;
   clear: both;
   column-count: 1;
   column-gap: 0;
@@ -461,7 +504,10 @@ label {
  */
 .thumbnail {
   margin: 0;
-  padding: 16px 32px 48px 32px; }
+  padding: 16px 16px 32px 16px; }
+  @media (min-width: 600px) {
+    .thumbnail {
+      padding: 16px 32px 48px 32px; } }
   .thumbnail.has-post-thumbnail section a,
   .thumbnail.has-post-thumbnail section .entry-meta {
     color: #fff; }
@@ -569,7 +615,10 @@ label {
       color: #191e23;
       padding: 32px 32px 0 32px;
       max-width: 784px;
-      margin: 0 32px; }
+      margin: 0 16px; }
+      @media (min-width: 600px) {
+        .site-content .featured .thumbnail .entry-excerpt {
+          margin: 0 32px; } }
       .site-content .featured .thumbnail .entry-excerpt h3 {
         font-family: "Noto Serif", serif;
         font-size: 28pt;
@@ -645,7 +694,7 @@ label {
  * Widgets
  */
 .widget {
-  margin-bottom: 64px; }
+  margin: 0 16px 64px 16px; }
   .widget h2 {
     font-size: 100%;
     margin-bottom: 1em; }

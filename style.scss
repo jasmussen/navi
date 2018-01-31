@@ -221,6 +221,10 @@ body ::-webkit-scrollbar-thumb {
 		margin-right: auto;
 	}
 
+	> * > span {
+		display: block;
+	}
+
 	// Add negative margin to wide and full blocks
 	.alignwide,
 	.alignfull {
@@ -246,6 +250,7 @@ body ::-webkit-scrollbar-thumb {
 	> .post,
 	> .page {
 		position: relative;
+		word-wrap: break-word;
 
 		pre {
 			overflow: auto;
@@ -262,23 +267,56 @@ body ::-webkit-scrollbar-thumb {
 
 		> h1,
 		> h2,
-		> h3 {
-			max-width: $theme-width;
-			margin: $text-margin auto;
-			font-size: 36pt;
-			line-height: 1.5;
+		> h3,
+		> h4,
+		> h5,
+		> h6 {
+			margin: #{ $text-margin * 1.5 } auto $text-margin auto;	// maybe tweak this
+			line-height: 1.4;
+		}
+
+		> h1 {
+			font-size: 2em;
+
+			@include break-small {
+				font-size: 3em;
+			}
 		}
 
 		> h2 {
-			font-size: 32pt;
+			font-size: 1.6em;
+
+			@include break-small {
+				font-size: 2.2em;
+			}
 		}
 
 		> h3 {
-			font-size: 28pt;
+			font-size: 1.4em;
+
+			@include break-small {
+				font-size: 1.8em;
+			}
 		}
 
 		> h4 {
-			font-size: 100%;
+			font-size: 1.2em;
+
+			@include break-small {
+				font-size: 1.4em;
+			}
+		}
+
+		> h5 {
+			font-size: 1.1em;
+
+			@include break-small {
+				font-size: 1.2em;
+			}
+		}
+
+		> h6 {
+			font-size: 1em;
 		}
 
 		> p:first-of-type {
@@ -542,7 +580,8 @@ label {
 
 	// Cover Image
 	.wp-block-cover-image {
-		margin: $text-margin auto;
+		margin-top: $text-margin;
+		margin-bottom: $text-margin;
 	}
 
 	// Separator
@@ -630,6 +669,13 @@ label {
 .site-content > .navigation {
 	overflow: hidden;
 	margin-bottom: #{ $text-margin * 3 };
+	margin-left: -$text-margin-small;
+	margin-right: -$text-margin-small;
+
+	@include break-small {
+		margin-left: 0;
+		margin-right: 0;
+	}
 
 	.thumbnails {
 		padding-top: $text-margin;
@@ -709,7 +755,7 @@ label {
 $column-width: 400px;
 
 .thumbnails.posts {
-	margin: $text-margin auto;
+	margin: -$text-margin-small auto $text-margin auto;
 	clear: both;
 	column-count: 1;
 	column-gap: 0;
@@ -729,7 +775,11 @@ $column-width: 400px;
 
 .thumbnail {
 	margin: 0;
-	padding: #{ $text-margin / 2 } $text-margin #{ $text-margin * 1.5 } $text-margin;
+	padding: $text-margin-small $text-margin-small $text-margin $text-margin-small;
+
+	@include break-small {
+		padding: $text-margin-small $text-margin #{ $text-margin * 1.5 } $text-margin;
+	}
 
 	&.has-post-thumbnail section {
 		a,
@@ -876,7 +926,11 @@ $column-width: 400px;
 			color: $dark-gray-900;
 			padding: $text-margin $text-margin 0 $text-margin;
 			max-width: $theme-width + $text-margin + $text-margin;
-			margin: 0 $text-margin;
+			margin: 0 $text-margin-small;
+
+			@include break-small {
+				margin: 0 $text-margin;
+			}
 
 			h3 {
 				font-family: $fonts-serif;
@@ -1006,7 +1060,7 @@ $column-width: 400px;
  */
 
 .widget {
-	margin-bottom: #{ $text-margin * 2 };
+	margin: 0 $text-margin-small #{ $text-margin * 2 } $text-margin-small;
 
 	h2 {
 		font-size: 100%;
