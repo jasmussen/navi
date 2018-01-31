@@ -6,4 +6,10 @@ It is very much a work in progress, unrefined, and would not be ready for a them
 
 Navi means "ships" in Corsican.
 
+## Modifying
+
+Navi is written in SCSS, so don't edit the CSS file directly. On the Mac, you can use something like <a href="http://koala-app.com/">Koala</a> to compile from SCSS to CSS for you.
+
+## License
+
 Theme is GPLV2.

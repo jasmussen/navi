@@ -15,18 +15,32 @@ Tags: translation-ready
  * Variables
  */
 
+// Metrics
 $theme-width: 720px;
 $theme-width-fullwide: 1800px;
-$text-margin: 56px;
-$text-margin-small: 28px;
-$responsive-padding: 20px;
+$text-margin: 32px;			// prev: 56
+$text-margin-small: 16px;	// prev: 28
+$text-margin-tiny: 12px;
+$header-height: 56px;
+
+// Fonts
 $fonts-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
 $fonts-serif: "Noto Serif", serif;
+$fonts-medium: 16px;
 $fonts-small: 13px;
 
-$blue-medium: #009fd4;
+// Blues
+$blue-medium-900: #006589;
+$blue-medium-800: #00739C;
+$blue-medium-700: #007FAC;
+$blue-medium-600: #008DBE;
+$blue-medium-500: #00a0d2;
+$blue-medium-400: #33B3DB;
+$blue-medium-300: #66C6E4;
+$blue-medium-200: #BFE7F3;
+$blue-medium-100: #E5F5FA;
 
-$dark-gray-900: #000;
+$black: #000;
 $dark-gray-900: #191e23;
 $dark-gray-800: #23282d;
 $dark-gray-700: #32373c;
@@ -47,6 +61,7 @@ $light-gray-200: #f3f4f5;
 $light-gray-100: #f8f9f9;
 $white: #fff;
 
+// Shadows
 $shadow-invisible: 0 0px 0px rgba( 0,0,0,0 );
 $shadow-big: 0 10px 30px rgba( 0,0,0, .2 );
 $shadow-responsive-footer: 0 0 20px rgba( 0,0,0, .2 );
@@ -116,10 +131,20 @@ body {
 }
 
 body {
-	font: 12.5pt/1.8 $fonts-serif;
+	font-size: $fonts-medium;
+	font-family: $fonts-serif;
+	line-height: 1.8;
 	color: $dark-gray-900;
 	min-width: 320px;
 	padding-bottom: $text-margin;
+
+	@include break-medium {
+		padding-top: $header-height;
+
+		&.logged-in {
+			padding-top: $header-height + 32px;
+		}
+	}
 }
 
 img {
@@ -155,12 +180,119 @@ svg {
 	display: none;
 }
 
-.posted-on .published+.updated {
+.posted-on .published + .updated {
 	display: none;
 }
 
 a {
-	color: $blue-medium;
+	color: $blue-medium-500;
+}
+
+// Scrollbars
+body ::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+
+body ::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: $light-gray-900;
+	border: 3px solid transparent;
+	background-clip: padding-box;
+
+	&:hover {
+		background-color: $dark-gray-100;
+	}
+}
+
+
+/**
+ * Full-wide main column
+ */
+
+.site-content {
+	margin: 0 auto;
+	padding: $text-margin $text-margin-small;	// Add some responsive padding
+
+	// Center and constrain every child element, except a few things
+	> * > *:not( .alignwide ):not( .alignfull ) {
+		max-width: $theme-width;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	// Add negative margin to wide and full blocks
+	.alignwide,
+	.alignfull {
+		max-width: $theme-width-fullwide;
+		width: calc( 100% + #{ $text-margin-small * 2 } );
+		margin-left: -$text-margin-small;
+		margin-right: -$text-margin-small;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	.alignwide {
+		@include break-large {
+			width: 80%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	// General post layout
+	> .post,
+	> .page {
+		position: relative;
+
+		pre {
+			overflow: auto;
+		}
+
+		a {
+			text-decoration: underline;
+			font-weight: 700;
+		}
+
+		a:hover {
+			text-decoration: none;
+		}
+
+		> h1,
+		> h2,
+		> h3 {
+			max-width: $theme-width;
+			margin: $text-margin auto;
+			font-size: 36pt;
+			line-height: 1.5;
+		}
+
+		> h2 {
+			font-size: 32pt;
+		}
+
+		> h3 {
+			font-size: 28pt;
+		}
+
+		> h4 {
+			font-size: 100%;
+		}
+
+		> p:first-of-type {
+			margin-top: 0;
+		}
+
+		// General post element margins
+		> pre,
+		> p,
+		> blockquote {
+			margin-top: $text-margin;
+			margin-bottom: $text-margin;
+		}
+	}
 }
 
 
@@ -168,35 +300,27 @@ a {
  * Navigation
  */
 
-body {
-	padding-top: 0;
-
-	@include break-medium {
-		padding-top: $text-margin;
-
-		&.logged-in {
-			padding-top: $text-margin + 32px;
-		}
-	}
-}
-
 .site-header {
 	font-family: $fonts-system;
 	font-weight: 500;
 	z-index: 10;
-	height: $text-margin;
+	height: $header-height;
 	background: $light-gray-200;
 	font-size: $fonts-small;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-	padding: 0 #{ $text-margin - $text-margin-small };
+	box-shadow: $shadow-responsive-footer;
 
 	position: fixed;
 	bottom: 0;
-	left: -#{ $text-margin - $responsive-padding };
-	right: -#{ $text-margin - $responsive-padding };
-	box-shadow: $shadow-responsive-footer;
+	left: -$text-margin;
+	right: -$text-margin;
+	padding: 0 $text-margin;
+
+	@include break-small {
+		padding: 0 $text-margin-small;
+	}
 
 	@include break-medium {
 		left: 0;
@@ -212,14 +336,18 @@ body {
 
 	a {
 		display: flex;
-		height: $text-margin;
+		height: $header-height;
 		width: 100%;
 		justify-content: left;
 		align-items: center;
 		color: $dark-gray-500;
 		text-align: center;
 		text-decoration: none;
-		padding: 0 #{ $text-margin-small / 2 };
+		padding: 0 $text-margin-tiny;
+
+		@include break-small {
+			padding: 0 $text-margin-small;
+		}
 	}
 
 	ul li.active a,
@@ -229,23 +357,22 @@ body {
 
 	.site-branding {
 		display: flex;
-		height: $text-margin;
+		height: $header-height;
 		margin: 0 auto 0 0;
-	}
 
-	.site-branding h1 {
-		font-size: $fonts-small;
-		font-weight: 500;
-	}
+		h1 {
+			font-size: $fonts-small;
+			font-weight: 500;
+		}
 
-	.site-branding a {
-		padding: 0 $text-margin-small 0 0;
-		color: $dark-gray-900;
+		a {
+			color: $dark-gray-900;
+		}
 	}
 
 	.main-navigation {
 		display: flex;
-		height: $text-margin;
+		height: $header-height;
 		justify-content: space-around;
 		margin: 0 0 0 $text-margin;
 	}
@@ -288,27 +415,11 @@ body {
 
 
 /**
- * Posts
- */
-
-.site-content {
-	margin: 0 auto;
-
-	/* Center everything, except a few things */
-	article > *:not( .alignfull ):not( .alignwide ) {
-		max-width: $theme-width;
-		margin-left: auto;
-		margin-right: auto;
-	}
-}
-
-
-/**
  * Entry Meta
  */
 
 .entry-meta {
-	padding: 0 $responsive-padding;
+	//padding: 0 $responsive-padding;
 	font-family: $fonts-system;
 	font-weight: 500;
 	font-size: $fonts-small;
@@ -370,266 +481,135 @@ label {
 
 
 /**
- * Scrollbars
- */
-
-body ::-webkit-scrollbar {
-	width: 12px;
-	height: 12px;
-}
-
-body ::-webkit-scrollbar-thumb {
-	border-radius: 10px;
-	background-color: $light-gray-900;
-	border: 3px solid transparent;
-	background-clip: padding-box;
-
-	&:hover {
-		background-color: $dark-gray-100;
-	}
-}
-
-
-/**
- * Alignments
- */
-
-.alignfull,
-.alignwide {
-	max-width: $theme-width-fullwide;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 0;
-
-	img {
-		width: 100%;
-	}
-}
-
-.alignfull {
-	width: 100%;
-}
-
-.alignwide {
-	width: 100%;
-
-	@include break-large {
-		width: 75%;
-	}
-}
-
-
-/**
- * Main column width
- */
-
-.navigation,
-.more-link,
-.comments-area,
-body.home .widget {
-	clear: both;
-	max-width: $theme-width;
-	margin: $text-margin auto;
-	padding: 0 $responsive-padding;
-}
-
-
-/**
- * Text
- */
-
-.site-content article {
-	position: relative;
-	padding: $text-margin 0;
-
-	.contact-form,
-	> .rating,
-	> pre,
-	> p,
-	> blockquote {
-		display: block;
-		max-width: $theme-width;
-		padding: 0 $responsive-padding;
-		margin-top: $text-margin;
-		margin-bottom: $text-margin;
-	}
-
-	> ul {
-		margin-top: $text-margin;
-		margin-bottom: $text-margin;
-		padding: 0 #{ $responsive-padding - 8px };
-	}
-
-	> ul:not( .alignfull ):not( .alignwide ):not( .wp-block-gallery ) {
-		max-width: $theme-width;
-		padding: 0 #{ $responsive-padding - 8px } 0 #{ $responsive-padding + $text-margin-small };
-	}
-
-	> .wp-block-image:not( .alignfull ):not( .alignwide ) {
-		padding: 0 $responsive-padding;
-	}
-
-	p a {
-		text-decoration: underline;
-		font-weight: 700;
-	}
-
-	pre {
-		overflow: auto;
-	}
-
-	a:hover {
-		text-decoration: none;
-	}
-
-	> h1,
-	> h2,
-	> h3 {
-		max-width: $theme-width;
-		padding: 0 $responsive-padding;
-		margin: $text-margin auto;
-		font-size: 36pt;
-		line-height: 1.5;
-	}
-
-	> h2 {
-		font-size: 32pt;
-	}
-
-	> h3 {
-		font-size: 28pt;
-	}
-
-	> h4 {
-		font-size: 100%;
-	}
-
-	> p:first-of-type {
-		margin-top: 0;
-	}
-}
-
-
-/**
- * Gallery
- */
-
-// To use, apply `custom-gallery` as an additional CSS class to your Gallery block under Block settings
-.site-content article > ul.custom-gallery {
-	column-count: 2;
-	column-gap: 0;
-	margin-bottom: 200px;
-	padding: 0;
-	display: block;
-
-	@include break-medium() {
-		column-count: 3;
-	}
-
-	@include break-huge() {
-		column-count: 4;
-	}
-
-	// Reset Gutenberg styles
-	.blocks-gallery-item {
-		display: block;
-		width: auto;
-		margin: 0;
-	}
-
-	.blocks-gallery-item figure {
-		height: auto;
-	}
-}
-
-// Legacy galleries
-.gallery {
-	padding: 0 $responsive-padding;
-	overflow: hidden;
-
-	figure {
-		margin: 0;
-		float: left;
-		width: 33%;
-	}
-}
-
-
-/**
  * Blocks
  */
 
-/* Cover Image */
-.wp-block-cover-image {
-	margin: $text-margin auto;
-}
+.site-content {
 
-/* Separator */
-hr,
-hr.wp-block-separator {
-	border: none;
-	text-align: center;
-	font-size: 20px;
-
-	&:before {
-		content: '...';
-		line-height: 0;
-		letter-spacing: 1em;
+	// Gallery
+	.wp-block-gallery:not( .alignwide ):not( .alignfull ) {
+		padding: 0;
+		max-width: $theme-width + 8px + 8px;	// compensate for gallery item margins
 	}
-}
 
-/* Quotes */
-.site-content article > blockquote.wp-block-quote,
-.site-content article.page > blockquote.wp-block-quote,
-.site-content article.post > blockquote.wp-block-quote {	/* increase specificity */
-	border-left: 4px solid $dark-gray-900;
-	font-size: 15pt;
-	padding: 0 2em;
-	font-style: italic;
-	max-width: $theme-width - $responsive-padding - $responsive-padding;
-}
-
-/* Fixme */
-.site-content article > blockquote.align-left,
-.site-content article > blockquote.align-right {
-	max-width: 360px;
-}
-
-.site-content article > blockquote.align-left {
-	float: left;
-	margin-left: 15%;
-	padding-right: 40px;
-}
-
-.site-content article > blockquote.align-right {
-	float: right;
-	margin-right: 15%;
-	padding-left: 40px;
-}
-
-/* Pullquote */
-.site-content article > blockquote.wp-block-pullquote {
-	padding: $text-margin 0;
-}
-
-/* Responsive embeds */
-.wp-block-embed {
-	position: relative;
-
-	&:before {
-		content: '';
+	// To use, apply `custom-gallery` as an additional CSS class to your Gallery block under Block settings
+	.custom-gallery {
+		column-count: 2;
+		column-gap: 0;
+		margin-bottom: 200px;
+		padding: 0;
 		display: block;
-		padding-top: 56.25%;	/* 16:9 */
+
+		@include break-medium() {
+			column-count: 3;
+		}
+
+		@include break-huge() {
+			column-count: 4;
+		}
+
+		// Reset Gutenberg styles
+		.blocks-gallery-item {
+			display: block;
+			width: auto;
+			margin: 0;
+		}
+
+		.blocks-gallery-item figure {
+			height: auto;
+		}
 	}
 
-	iframe {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
+	// Legacy galleries
+	.gallery {
+		overflow: hidden;
+
+		figure {
+			margin: 0;
+			float: left;
+			width: 33%;
+		}
+	}
+
+	// Cover Image
+	.wp-block-cover-image {
+		margin: $text-margin auto;
+	}
+
+	// Separator
+	hr,
+	hr.wp-block-separator {
+		border: none;
+		text-align: center;
+		font-size: 20px;
+
+		&:before {
+			content: '...';
+			line-height: 0;
+			letter-spacing: 1em;
+		}
+	}
+
+	// Quotes
+	blockquote:not( .wp-block-pullquote ),
+	.wp-block-quote {
+		cite,
+		footer {
+			color: $dark-gray-300;
+			margin-top: 1em;
+			position: relative;
+			font-size: $fonts-small;
+			font-style: normal;
+		}
+
+		// Second quote style
+		&.is-large {
+			padding: 0 1em;
+
+			p {
+				font-size: 24px;
+				font-style: italic;
+				line-height: 1.6;
+			}
+
+			cite,
+			footer {
+				font-size: 19px;
+				text-align: right;
+			}
+		}
+
+		// First quote style
+		&:not(.is-large) {
+			border-left: 4px solid $dark-gray-900;
+			padding-left: 1em;
+		}
+	}
+
+	// Pullquote
+	blockquote.wp-block-pullquote {
+		padding: $text-margin 0;
+	}
+
+	// Responsive embeds
+	.wp-block-embed {
+		position: relative;
+
+		&:before {
+			content: '';
+			display: block;
+			padding-top: 56.25%;	/* 16:9 */
+		}
+
+		iframe {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
 	}
 }
 
@@ -638,13 +618,13 @@ hr.wp-block-separator {
  * Post Navigation
  */
 
-.navigation {
-	margin: 0 auto $text-margin auto;
+.site-content > .navigation {
 	overflow: hidden;
+	margin-bottom: #{ $text-margin * 3 };
 
 	.thumbnails {
-		padding-top: $text-margin-small;
-		margin: 0 -$text-margin-small;
+		padding-top: $text-margin;
+		max-width: $theme-width + $text-margin + $text-margin;	// compensate for item margins
 	}
 
 	.nav-previous,
@@ -667,23 +647,7 @@ hr.wp-block-separator {
 
 
 /**
- * Home Page
- */
-
-body.home .widget {
-	h2 {
-		font-size: 100%;
-		margin-bottom: 1em;
-	}
-
-	p {
-		margin-bottom: $text-margin;
-	}
-}
-
-
-/**
- * Pagination
+ * Page Nagination
  */
 
 .nav-links {
@@ -730,22 +694,21 @@ body.home .widget {
 
 
 /**
- * Post columns
+ * Archive column layout
  */
 
 $column-width: 400px;
 
-.posts {
+.thumbnails.posts {
 	margin: $text-margin auto;
 	clear: both;
-	overflow: hidden;
 	column-count: 1;
 	column-gap: 0;
-	max-width: 1130px;
+	max-width: #{ ( $theme-width * 1.5 ) + $text-margin + $text-margin };	// compensate for item margins
 }
 
 @media only screen and ( min-width: #{ $column-width * 2 } )  {
-	.posts {
+	.thumbnails.posts {
 		column-count: 2;
 	}
 }
@@ -757,24 +720,7 @@ $column-width: 400px;
 
 .thumbnail {
 	margin: 0;
-	padding: #{ $text-margin-small / 2 } $text-margin-small #{ $text-margin-small * 1.5 } $text-margin-small;
-
-	h3 {
-		font-family: $fonts-system;
-		font-size: $fonts-small;
-		font-weight: bold;
-		margin: 0 0 1em 0;
-	}
-
-	h4 {
-		font-size: 12.5pt;
-	}
-
-	section:before {
-		content: '';
-		display: block;
-		padding-top: 50%;
-	}
+	padding: #{ $text-margin / 2 } $text-margin #{ $text-margin * 1.5 } $text-margin;
 
 	&.has-post-thumbnail section {
 		a,
@@ -798,50 +744,67 @@ $column-width: 400px;
 		background: $light-gray-200;
 		padding: 0;
 		position: relative;
-		overflow: hidden;
 		box-shadow: $shadow-invisible;
 		transition: all .1s linear;
 		break-inside: avoid;
-		min-height: 200px;
 		width: 100%;
-	}
+		min-height: 200px;
+		will-change: transform;
 
-	section > a {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		padding: $text-margin-small;
-		text-decoration: none;
-		display: block;
-		color: $dark-gray-900;
-		background-size: cover;
-		background-position: center center;
-	}
+		a {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			padding: $text-margin;
+			text-decoration: none;
+			display: block;
+			color: $dark-gray-900;
+			background-size: cover;
+			background-position: center center;
+		}
 
-	section > a:hover h4 {
-		text-decoration: underline;
-	}
+		a:hover h4 {
+			text-decoration: underline;
+		}
 
-	section:hover {
-		box-shadow: $shadow-big;
-		background: $white;
-	}
+		h3 {
+			font-family: $fonts-system;
+			font-size: $fonts-small;
+			font-weight: bold;
+			margin: 0 0 1em 0;
+		}
 
-	.entry-meta {
-		position: absolute;
-		bottom: $text-margin-small;
-		left: $text-margin-small;
-		padding: 0;
-		margin: 0;
-	}
+		h4 {
+			font-size: 12.5pt;
+		}
 
-	h3,
-	h4,
-	p {
-		position: relative;
-		z-index: 1;
+		h3,
+		h4,
+		p {
+			position: relative;
+			z-index: 1;
+		}
+
+		.entry-meta {
+			position: absolute;
+			bottom: $text-margin-small;
+			left: $text-margin-small;
+			padding: 0;
+			margin: 0;
+		}
+
+		&:hover {
+			box-shadow: $shadow-big;
+			background: $white;
+		}
+
+		&:before {
+			content: '';
+			display: block;
+			padding-top: 50%;
+		}
 	}
 }
 
@@ -851,15 +814,13 @@ $column-width: 400px;
  */
 
 .site-content .featured {
-	margin: 0 auto #{ $text-margin * 3 } auto;
+	margin: 0 auto #{ $text-margin * 2 } auto;
 	max-width: $theme-width * 1.5;
 
-	article.post {
-		padding: 35% $text-margin-small 0;
+	.thumbnail {
+		padding: 30% 0 0 0;
 		position: relative;
-	}
-
-	article.post {
+		max-width: none;
 
 		.entry-thumbnail {
 			display: block;
@@ -898,42 +859,31 @@ $column-width: 400px;
 			z-index: 1;
 			pointer-events: none;
 		}
-	}
 
-	article.post .entry-meta {
-		position: absolute;
-		margin: $text-margin-small 0 0 0;
-		padding: 0 0 0 $text-margin-small;
-		color: $dark-gray-900;
-
-		a {
+		.entry-excerpt {
+			position: relative;
+			z-index: 1;
+			background: $white;
 			color: $dark-gray-900;
-		}
-	}
+			padding: $text-margin $text-margin 0 $text-margin;
+			max-width: $theme-width + $text-margin + $text-margin;
+			margin: 0 $text-margin;
 
-	article.post .entry-excerpt {
-		position: relative;
-		z-index: 1;
-		display: block;
-		margin: 0;
-		padding: 0;
-		background: $white;
-		color: $dark-gray-900;
-		text-decoration: none;
-		padding: $text-margin-small $text-margin-small 0 $text-margin-small;
+			h3 {
+				font-family: $fonts-serif;
+				font-size: 28pt;
+				margin-bottom: 0;
+			}
 
-		h3 {
-			font-size: 28pt;
-		}
+			a {
+				display: block;
+				color: $dark-gray-900;
+				text-decoration: none;
+			}
 
-		a {
-			display: block;
-			color: $dark-gray-900;
-			text-decoration: none;
-		}
-
-		a:hover {
-			text-decoration: underline;
+			a:hover {
+				text-decoration: underline;
+			}
 		}
 	}
 }
@@ -943,20 +893,19 @@ $column-width: 400px;
  * Comments
  */
 
+.comments-area {
+	clear: both;
 
- .comments-area {
-	 clear: both;
-
-	 .logged-in-as {
-  		font-size: $fonts-small;
-  		font-family: $fonts-system;
+	.logged-in-as {
+		font-size: $fonts-small;
+		font-family: $fonts-system;
 		font-weight: 500;
-  		color: $dark-gray-500;
+		color: $dark-gray-500;
 
-  		a {
-  			color: $dark-gray-500;
-  		}
-  	}
+		a {
+			color: $dark-gray-500;
+		}
+	}
 
 	.comment-respond {
 		margin-top: $text-margin;
@@ -1037,10 +986,25 @@ $column-width: 400px;
 		font-style: italic;
 	}
 
-	.comments-pagination {
-	}
-
 	.form-submit {
 		text-align: right;
+	}
+}
+
+
+/**
+ * Widgets
+ */
+
+.widget {
+	margin-bottom: #{ $text-margin * 2 };
+
+	h2 {
+		font-size: 100%;
+		margin-bottom: 1em;
+	}
+
+	p {
+		margin-bottom: $text-margin;
 	}
 }
