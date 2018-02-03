@@ -11,7 +11,7 @@
 <body <?php body_class(); ?>>
 
 <div class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'gutenbergtheme' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'navi' ); ?></a>
 
 		<header class="site-header">
 

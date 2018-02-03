@@ -6,7 +6,7 @@ if ( ! function_exists( 'navitheme_setup' ) ) :
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
 
-		add_image_size( 'custom-thumbnails', 600, 300 );
+		add_image_size( 'custom-thumbnails', 900, 450 );
 		add_image_size( 'big-thumbnails', 1620, 1120 );
 
 		register_nav_menus( array(
@@ -41,7 +41,7 @@ function navitheme_content_width() {
 add_action( 'after_setup_theme', 'navitheme_content_width', 0 );
 
 
-function navitheme_fonts_url() {
+function navi_fonts_url() {
     $fonts_url = '';
 
 	$notoserif = esc_html_x( 'on', 'Noto Serif font: on or off', 'navitheme' );
@@ -65,6 +65,7 @@ function navitheme_fonts_url() {
 
 function navitheme_scripts() {
 	wp_enqueue_style( 'gutenbergbase-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'navi-fonts', navi_fonts_url(), array(), null );
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}

@@ -25,7 +25,7 @@ $header-height: 56px;
 
 // Fonts
 $fonts-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
-$fonts-serif: "Noto Serif", serif;
+$fonts-serif: "Noto Serif", Georgia, serif;
 $fonts-medium: 16px;
 $fonts-small: 13px;
 
@@ -244,6 +244,37 @@ body ::-webkit-scrollbar-thumb {
 			margin-left: auto;
 			margin-right: auto;
 		}
+	}
+
+	// Legacy floats
+	img.alignleft {
+		float: left;
+		margin-right: $text-margin-small;
+	}
+
+	img.alignright {
+		float: right;
+		margin-left: $text-margin-small;
+	}
+
+	// New floats
+	.alignleft,
+	.alignright {
+		max-width: $theme-width !important;	// pending upstream fix
+
+	 	> img {
+			max-width: 50%;
+		}
+	}
+
+	.alignleft img {
+		float: left;
+		margin-right: $text-margin-small;
+	}
+
+	.alignright img {
+		float: right;
+		margin-left: $text-margin-small;
 	}
 
 	// General post layout
@@ -466,12 +497,11 @@ body ::-webkit-scrollbar-thumb {
  */
 
 .entry-meta {
-	//padding: 0 $responsive-padding;
 	font-family: $fonts-system;
 	font-weight: 500;
 	font-size: $fonts-small;
 	color: $dark-gray-500;
-	margin-bottom: $text-margin;
+	margin: $text-margin 0;
 }
 
 .entry-meta a {
@@ -958,6 +988,7 @@ $column-width: 400px;
 
 .comments-area {
 	clear: both;
+	margin: #{ $text-margin * 3 } 0;
 
 	.logged-in-as {
 		font-size: $fonts-small;

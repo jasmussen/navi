@@ -17,35 +17,25 @@
 					<?php
 					$prevPost = get_previous_post();
 					if ( $prevPost ) {
-						$args = array(
-							'posts_per_page' => 1,
-							'include' => $prevPost->ID
-						);
-						$prevPost = get_posts( $args );
-						foreach ( $prevPost as $post ) {
-							setup_postdata( $post );
-							$title = "Previous";
-							include( locate_template( 'template-parts/content-thumbnail.php' ) );
-							wp_reset_postdata();
-						}
+						global $post;
+						$post = $prevPost;
+						setup_postdata( $post );
+						$title = __( 'Previous', 'navi' );
+						include( locate_template( 'template-parts/content-thumbnail.php' ) );
+						wp_reset_postdata();
 					}
 					?>
 				</div>
 				<div class="nav-next">
 					<?php
 					$nextPost = get_next_post();
-					if( $nextPost ) {
-						$args = array(
-							'posts_per_page' => 1,
-							'include' => $nextPost->ID
-						);
-						$nextPost = get_posts( $args );
-						foreach ( $nextPost as $post ) {
-							setup_postdata( $post );
-							$title = "Next";
-							include( locate_template( 'template-parts/content-thumbnail.php' ) );
-							wp_reset_postdata();
-						}
+					if ( $nextPost ) {
+						global $post;
+						$post = $nextPost;
+						setup_postdata( $post );
+						$title = __( 'Next', 'navi' );
+						include( locate_template( 'template-parts/content-thumbnail.php' ) );
+						wp_reset_postdata();
 					}
 					?>
 				</div>

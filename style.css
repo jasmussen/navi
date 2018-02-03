@@ -31,7 +31,7 @@ body {
 
 body {
   font-size: 16px;
-  font-family: "Noto Serif", serif;
+  font-family: "Noto Serif", Georgia, serif;
   line-height: 1.8;
   color: #191e23;
   min-width: 320px;
@@ -114,6 +114,24 @@ body ::-webkit-scrollbar-thumb {
       width: 80%;
       margin-left: auto;
       margin-right: auto; } }
+  .site-content img.alignleft {
+    float: left;
+    margin-right: 16px; }
+  .site-content img.alignright {
+    float: right;
+    margin-left: 16px; }
+  .site-content .alignleft,
+  .site-content .alignright {
+    max-width: 720px !important; }
+    .site-content .alignleft > img,
+    .site-content .alignright > img {
+      max-width: 50%; }
+  .site-content .alignleft img {
+    float: left;
+    margin-right: 16px; }
+  .site-content .alignright img {
+    float: right;
+    margin-left: 16px; }
   .site-content > .post,
   .site-content > .page {
     position: relative;
@@ -294,7 +312,7 @@ body ::-webkit-scrollbar-thumb {
   font-weight: 500;
   font-size: 13px;
   color: #555d66;
-  margin-bottom: 32px; }
+  margin: 32px 0; }
 
 .entry-meta a {
   color: #555d66;
@@ -320,7 +338,7 @@ input[type="submit"] {
   margin: 0;
   padding: 0 24px;
   white-space: nowrap;
-  font-family: "Noto Serif", serif; }
+  font-family: "Noto Serif", Georgia, serif; }
 
 input,
 textarea {
@@ -620,7 +638,7 @@ label {
         .site-content .featured .thumbnail .entry-excerpt {
           margin: 0 32px; } }
       .site-content .featured .thumbnail .entry-excerpt h3 {
-        font-family: "Noto Serif", serif;
+        font-family: "Noto Serif", Georgia, serif;
         font-size: 28pt;
         margin-bottom: 0; }
       .site-content .featured .thumbnail .entry-excerpt a {
@@ -634,7 +652,8 @@ label {
  * Comments
  */
 .comments-area {
-  clear: both; }
+  clear: both;
+  margin: 96px 0; }
   .comments-area .logged-in-as {
     font-size: 13px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
