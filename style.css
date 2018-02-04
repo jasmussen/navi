@@ -132,19 +132,29 @@ body ::-webkit-scrollbar-thumb {
   .site-content .alignright img {
     float: right;
     margin-left: 16px; }
+  .site-content .aligncenter {
+    display: block;
+    margin: 0 auto; }
+  .site-content h1.page-title {
+    margin-bottom: 32px; }
   .site-content > .post,
-  .site-content > .page {
+  .site-content > .page,
+  .site-content > section {
     position: relative;
-    word-wrap: break-word; }
+    word-wrap: break-word;
+    margin-bottom: 64px; }
     .site-content > .post pre,
-    .site-content > .page pre {
+    .site-content > .page pre,
+    .site-content > section pre {
       overflow: auto; }
     .site-content > .post a,
-    .site-content > .page a {
+    .site-content > .page a,
+    .site-content > section a {
       text-decoration: underline;
       font-weight: 700; }
     .site-content > .post a:hover,
-    .site-content > .page a:hover {
+    .site-content > .page a:hover,
+    .site-content > section a:hover {
       text-decoration: none; }
     .site-content > .post > h1,
     .site-content > .post > h2,
@@ -157,56 +167,77 @@ body ::-webkit-scrollbar-thumb {
     .site-content > .page > h3,
     .site-content > .page > h4,
     .site-content > .page > h5,
-    .site-content > .page > h6 {
+    .site-content > .page > h6,
+    .site-content > section > h1,
+    .site-content > section > h2,
+    .site-content > section > h3,
+    .site-content > section > h4,
+    .site-content > section > h5,
+    .site-content > section > h6 {
       margin: 48px auto 32px auto;
       line-height: 1.4; }
     .site-content > .post > h1,
-    .site-content > .page > h1 {
+    .site-content > .page > h1,
+    .site-content > section > h1 {
       font-size: 2em; }
       @media (min-width: 600px) {
         .site-content > .post > h1,
-        .site-content > .page > h1 {
+        .site-content > .page > h1,
+        .site-content > section > h1 {
           font-size: 3em; } }
     .site-content > .post > h2,
-    .site-content > .page > h2 {
+    .site-content > .page > h2,
+    .site-content > section > h2 {
       font-size: 1.6em; }
       @media (min-width: 600px) {
         .site-content > .post > h2,
-        .site-content > .page > h2 {
+        .site-content > .page > h2,
+        .site-content > section > h2 {
           font-size: 2.2em; } }
     .site-content > .post > h3,
-    .site-content > .page > h3 {
+    .site-content > .page > h3,
+    .site-content > section > h3 {
       font-size: 1.4em; }
       @media (min-width: 600px) {
         .site-content > .post > h3,
-        .site-content > .page > h3 {
+        .site-content > .page > h3,
+        .site-content > section > h3 {
           font-size: 1.8em; } }
     .site-content > .post > h4,
-    .site-content > .page > h4 {
+    .site-content > .page > h4,
+    .site-content > section > h4 {
       font-size: 1.2em; }
       @media (min-width: 600px) {
         .site-content > .post > h4,
-        .site-content > .page > h4 {
+        .site-content > .page > h4,
+        .site-content > section > h4 {
           font-size: 1.4em; } }
     .site-content > .post > h5,
-    .site-content > .page > h5 {
+    .site-content > .page > h5,
+    .site-content > section > h5 {
       font-size: 1.1em; }
       @media (min-width: 600px) {
         .site-content > .post > h5,
-        .site-content > .page > h5 {
+        .site-content > .page > h5,
+        .site-content > section > h5 {
           font-size: 1.2em; } }
     .site-content > .post > h6,
-    .site-content > .page > h6 {
+    .site-content > .page > h6,
+    .site-content > section > h6 {
       font-size: 1em; }
     .site-content > .post > p:first-of-type,
-    .site-content > .page > p:first-of-type {
+    .site-content > .page > p:first-of-type,
+    .site-content > section > p:first-of-type {
       margin-top: 0; }
     .site-content > .post > pre,
     .site-content > .post > p,
     .site-content > .post > blockquote,
     .site-content > .page > pre,
     .site-content > .page > p,
-    .site-content > .page > blockquote {
+    .site-content > .page > blockquote,
+    .site-content > section > pre,
+    .site-content > section > p,
+    .site-content > section > blockquote {
       margin-top: 32px;
       margin-bottom: 32px; }
 
@@ -359,6 +390,12 @@ label {
   font-weight: 500;
   color: #a2aab2; }
 
+.search-field {
+  width: 100%; }
+
+input[type="submit"].search-submit {
+  display: none; }
+
 /**
  * Blocks
  */
@@ -485,7 +522,9 @@ label {
   .nav-links .screen-reader-text {
     display: none; }
   .nav-links > a,
-  .nav-links > span {
+  .nav-links > span,
+  .nav-links .nav-previous a,
+  .nav-links .nav-next a {
     display: inline-block;
     padding: 1em 2em;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
@@ -495,9 +534,16 @@ label {
     text-decoration: none;
     margin-right: 4px; }
   .nav-links > .current,
-  .nav-links .nav-archive {
-    background: #f3f4f5; }
-  .nav-links > a:hover {
+  .nav-links .nav-archive,
+  .nav-links .nav-previous a,
+  .nav-links .nav-next a {
+    background: #f3f4f5;
+    text-align: center; }
+  .nav-links .nav-next a {
+    float: right; }
+  .nav-links > a:hover,
+  .nav-links .nav-previous a:hover,
+  .nav-links .nav-next a:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     background: #fff; }
   .nav-links .next:before {
@@ -687,7 +733,8 @@ label {
     .comments-area .comment-author .says {
       display: none; }
   .comments-area .comment-body {
-    padding: 16px 0; }
+    padding: 16px 0;
+    word-wrap: break-word; }
   .comments-area .comment-metadata {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
     font-weight: 500;

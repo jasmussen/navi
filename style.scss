@@ -277,11 +277,24 @@ body ::-webkit-scrollbar-thumb {
 		margin-left: $text-margin-small;
 	}
 
+	// Center
+	.aligncenter {
+		display: block;
+		margin: 0 auto;
+	}
+
+	// Other
+	h1.page-title {
+		margin-bottom: $text-margin;
+	}
+
 	// General post layout
 	> .post,
-	> .page {
+	> .page,
+	> section {
 		position: relative;
 		word-wrap: break-word;
+		margin-bottom: #{ $text-margin * 2 };
 
 		pre {
 			overflow: auto;
@@ -556,6 +569,14 @@ label {
 	color: $light-gray-900;
 }
 
+.search-field {
+	width: 100%;
+}
+
+input[type="submit"].search-submit {
+	display: none;
+}
+
 
 /**
  * Blocks
@@ -746,7 +767,9 @@ label {
 	}
 
 	> a,
-	> span {
+	> span,
+	.nav-previous a,
+	.nav-next a {
 		display: inline-block;
 		padding: 1em 2em;
 		font-family: $fonts-system;
@@ -758,11 +781,20 @@ label {
 	}
 
 	> .current,
-	.nav-archive {
+	.nav-archive,
+	.nav-previous a,
+	.nav-next a {
 		background: $light-gray-200;
+		text-align: center;
 	}
 
-	> a:hover {
+	.nav-next a {
+		float: right;
+	}
+
+	> a:hover,
+	.nav-previous a:hover,
+	.nav-next a:hover {
 		box-shadow: $shadow-big;
 		background: $white;
 	}
@@ -1045,6 +1077,7 @@ $column-width: 400px;
 
 	.comment-body {
 		padding: $text-margin-small 0;
+		word-wrap: break-word;
 	}
 
 	.comment-metadata {
