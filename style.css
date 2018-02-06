@@ -553,19 +553,24 @@ input[type="submit"].search-submit {
  * Thumbnail
  */
 .thumbnail {
-  width: 50%;
-  float: left;
   padding: 0; }
+  @media (min-width: 782px) {
+    .thumbnail {
+      width: 50%;
+      float: left; } }
   .thumbnail section {
-    margin: 0 32px;
+    margin: 0 16px;
     position: relative;
     break-inside: avoid;
-    min-height: 200px;
     overflow: hidden; }
+    @media (min-width: 600px) {
+      .thumbnail section {
+        margin: 0 32px; } }
     .thumbnail section:hover .entry-excerpt a {
       text-decoration: underline; }
     .thumbnail section .entry-thumbnail {
       display: block;
+      min-height: 160px;
       background-position: center center;
       background-color: #f3f4f5;
       background-repeat: no-repeat;
@@ -578,11 +583,15 @@ input[type="submit"].search-submit {
     .thumbnail section .entry-excerpt {
       position: relative;
       top: -2.5em;
-      margin: 0 32px;
-      padding: 16px 32px;
       background: #fff;
       display: inline-block;
-      min-height: 96px; }
+      min-height: 96px;
+      margin: 0 16px;
+      padding: 16px 16px; }
+      @media (min-width: 600px) {
+        .thumbnail section .entry-excerpt {
+          margin: 0 32px;
+          padding: 16px 32px; } }
     .thumbnail section .entry-excerpt a {
       text-decoration: none;
       color: #191e23; }

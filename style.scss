@@ -810,15 +810,21 @@ input[type="submit"].search-submit {
  */
 
 .thumbnail {
-	width: 50%;
-	float: left;
 	padding: 0;
 
+	@include break-medium {
+		width: 50%;
+		float: left;
+	}
+
 	section {
-		margin: 0 $text-margin;
+		margin: 0 $text-margin-small;
+		@include break-small {
+			margin: 0 $text-margin;
+		}
+
 		position: relative;
 		break-inside: avoid;
-		min-height: 200px;
 		overflow: hidden;
 
 		&:hover .entry-excerpt a {
@@ -827,6 +833,7 @@ input[type="submit"].search-submit {
 
 		.entry-thumbnail {
 			display: block;
+			min-height: 160px;
 
 			background-position: center center;
 			background-color: $light-gray-200;
@@ -846,11 +853,17 @@ input[type="submit"].search-submit {
 		.entry-excerpt {
 			position: relative;
 			top: -2.5em;
-			margin: 0 $text-margin;
-			padding: $text-margin-small $text-margin;
 			background: $white;
 			display: inline-block;
 			min-height: #{ $text-margin * 3 };	// Ensure even distribution of thumbnails
+
+			margin: 0 $text-margin-small;
+			padding: $text-margin-small $text-margin-small;
+
+			@include break-small {
+				margin: 0 $text-margin;
+				padding: $text-margin-small $text-margin;
+			}
 		}
 
 		.entry-excerpt a {
