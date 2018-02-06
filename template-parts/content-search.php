@@ -4,8 +4,8 @@
 	<?php if ( 'post' === get_post_type() ) : ?>
 	<div class="entry-meta">
 		<?php navi_posted_on(); ?>
-	</div><!-- .entry-meta -->
+	</div>
 	<?php endif; ?>
 
 	<?php the_excerpt(); ?>
-</article><!-- #post-<?php the_ID(); ?> -->
+</article>
