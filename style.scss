@@ -732,23 +732,6 @@ input[type="submit"].search-submit {
 		padding-top: $text-margin;
 		max-width: $theme-width + $text-margin + $text-margin;	// compensate for item margins
 	}
-
-	.nav-previous,
-	.nav-next {
-		width: 100%;
-
-		@include break-small {
-			width: 50%;
-		}
-	}
-
-	.nav-previous {
-		float: left;
-	}
-
-	.nav-next {
-		float: right;
-	}
 }
 
 
@@ -814,20 +797,11 @@ input[type="submit"].search-submit {
  * Archive column layout
  */
 
-$column-width: 400px;
-
 .thumbnails.posts {
-	margin: -$text-margin-small auto $text-margin auto;
+	margin: #{ $text-margin * 3 } auto;
 	clear: both;
-	column-count: 1;
-	column-gap: 0;
+	overflow: hidden;
 	max-width: #{ ( $theme-width * 1.5 ) + $text-margin + $text-margin };	// compensate for item margins
-}
-
-@media only screen and ( min-width: #{ $column-width * 2 } )  {
-	.thumbnails.posts {
-		column-count: 2;
-	}
 }
 
 
@@ -836,96 +810,71 @@ $column-width: 400px;
  */
 
 .thumbnail {
-	margin: 0;
-	padding: $text-margin-small $text-margin-small $text-margin $text-margin-small;
-
-	@include break-small {
-		padding: $text-margin-small $text-margin #{ $text-margin * 1.5 } $text-margin;
-	}
-
-	&.has-post-thumbnail section {
-		a,
-		.entry-meta {
-			color: $white;
-		}
-
-		> a:before {
-			content: '';
-			display: block;
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			background: rgba( 0,0,0, .5 );
-		}
-	}
+	width: 50%;
+	float: left;
+	padding: 0;
 
 	section {
-		background: $light-gray-200;
-		padding: 0;
+		margin: 0 $text-margin;
 		position: relative;
-		box-shadow: $shadow-invisible;
-		transition: all .1s linear;
 		break-inside: avoid;
-		width: 100%;
 		min-height: 200px;
-		will-change: transform;
+		overflow: hidden;
 
-		a {
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			padding: $text-margin;
-			text-decoration: none;
-			display: block;
-			color: $dark-gray-900;
-			background-size: cover;
-			background-position: center center;
-		}
-
-		a:hover h4 {
+		&:hover .entry-excerpt a {
 			text-decoration: underline;
 		}
 
-		h3 {
+		.entry-thumbnail {
+			display: block;
+
+			background-position: center center;
+			background-color: $light-gray-200;
+			background-repeat: no-repeat;
+
+			// No thumbnail
+			background-image: url( 'assets/pattern.svg' );
+			background-size: 24px auto;
+		}
+
+		.entry-thumbnail:before {
+			content: '';
+			display: block;
+			padding-top: 40%;
+		}
+
+		.entry-excerpt {
+			position: relative;
+			top: -2.5em;
+			margin: 0 $text-margin;
+			padding: $text-margin-small $text-margin;
+			background: $white;
+			display: inline-block;
+			min-height: #{ $text-margin * 3 };	// Ensure even distribution of thumbnails
+		}
+
+		.entry-excerpt a {
+			text-decoration: none;
+			color: $dark-gray-900;
+		}
+
+		// Next / Previous title
+		.entry-excerpt h3 {
 			font-family: $fonts-system;
 			font-size: $fonts-small;
 			font-weight: bold;
 			margin: 0 0 1em 0;
 		}
 
-		h4 {
+		// Post heading
+		.entry-excerpt h4 {
 			font-size: 12.5pt;
 		}
+	}
 
-		h3,
-		h4,
-		p {
-			position: relative;
-			z-index: 1;
-		}
-
-		.entry-meta {
-			position: absolute;
-			bottom: $text-margin-small;
-			left: $text-margin-small;
-			padding: 0;
-			margin: 0;
-		}
-
-		&:hover {
-			box-shadow: $shadow-big;
-			background: $white;
-		}
-
-		&:before {
-			content: '';
-			display: block;
-			padding-top: 50%;
-		}
+	// With thumbnail
+	&.has-post-thumbnail section .entry-thumbnail {
+		background-size: cover;
 	}
 }
 
@@ -938,10 +887,14 @@ $column-width: 400px;
 	margin: 0 auto #{ $text-margin * 2 } auto;
 	max-width: $theme-width * 1.5;
 
-	.thumbnail {
+	.thumbnail-featured {
 		padding: 30% 0 0 0;
 		position: relative;
 		max-width: none;
+
+		&:hover .entry-excerpt a {
+			text-decoration: underline;
+		}
 
 		.entry-thumbnail {
 			display: block;
@@ -1004,10 +957,6 @@ $column-width: 400px;
 				display: block;
 				color: $dark-gray-900;
 				text-decoration: none;
-			}
-
-			a:hover {
-				text-decoration: underline;
 			}
 		}
 	}
@@ -1124,6 +1073,7 @@ $column-width: 400px;
  */
 
 .widget {
+	clear: both;
 	margin: 0 $text-margin-small #{ $text-margin * 2 } $text-margin-small;
 
 	h2 {

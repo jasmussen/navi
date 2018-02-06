@@ -12,7 +12,6 @@
 		?>
 		<div class="navigation">
 			<div class="thumbnails">
-				<div class="nav-previous">
 					<?php
 					$prevPost = get_previous_post();
 					if ( $prevPost ) {
@@ -24,8 +23,6 @@
 						wp_reset_postdata();
 					}
 					?>
-				</div>
-				<div class="nav-next">
 					<?php
 					$nextPost = get_next_post();
 					if ( $nextPost ) {
@@ -37,7 +34,6 @@
 						wp_reset_postdata();
 					}
 					?>
-				</div>
 			</div>
 		</div>
 		<?php
