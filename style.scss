@@ -17,7 +17,7 @@ Tags: translation-ready
 
 // Metrics
 $theme-width: 720px;
-$theme-width-fullwide: 1800px;
+$theme-width-fullwide: 2160px;
 $text-margin: 32px;			// prev: 56
 $text-margin-small: 16px;	// prev: 28
 $text-margin-tiny: 12px;
@@ -228,7 +228,6 @@ body ::-webkit-scrollbar-thumb {
 	// Add negative margin to wide and full blocks
 	.alignwide,
 	.alignfull {
-		max-width: $theme-width-fullwide;
 		width: calc( 100% + #{ $text-margin-small * 2 } );
 		margin-left: -$text-margin-small;
 		margin-right: -$text-margin-small;
@@ -236,6 +235,14 @@ body ::-webkit-scrollbar-thumb {
 		img {
 			width: 100%;
 		}
+	}
+
+	.alignwide {
+		max-width: #{ $theme-width-fullwide * .75 };
+	}
+
+	.alignfull {
+		max-width: $theme-width-fullwide;
 	}
 
 	.alignwide {
@@ -382,7 +389,6 @@ body ::-webkit-scrollbar-thumb {
 	.site-content .alignfull {
 		margin-left: auto;
 		margin-right: auto;
-		width: 100%;
 	}
 }
 
@@ -708,6 +714,21 @@ input[type="submit"].search-submit {
 			left: 0;
 			width: 100%;
 			height: 100%;
+		}
+	}
+
+	// Code
+	code {
+		background: $light-gray-200;
+		padding: 2px;
+	}
+
+	.wp-block-code {
+		background: $light-gray-100;
+		padding: #{ $text-margin-small / 2 } $text-margin-small;
+
+		code {
+			padding: 0;
 		}
 	}
 }
