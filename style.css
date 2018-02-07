@@ -492,6 +492,7 @@ input[type="submit"].search-submit {
   background: #f8f9f9;
   padding: 8px 16px; }
   .site-content .wp-block-code code {
+    background: none;
     padding: 0; }
 
 /**

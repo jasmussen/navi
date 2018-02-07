@@ -728,6 +728,7 @@ input[type="submit"].search-submit {
 		padding: #{ $text-margin-small / 2 } $text-margin-small;
 
 		code {
+			background: none;
 			padding: 0;
 		}
 	}
