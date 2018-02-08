@@ -17,7 +17,8 @@ Tags: translation-ready
 
 // Metrics
 $theme-width: 720px;
-$theme-width-fullwide: 2160px;
+$theme-width-wide: 80%;
+$theme-max-width-fullwide: 2160px;
 $text-margin: 32px;			// prev: 56
 $text-margin-small: 16px;	// prev: 28
 $text-margin-tiny: 12px;
@@ -238,16 +239,16 @@ body ::-webkit-scrollbar-thumb {
 	}
 
 	.alignwide {
-		max-width: #{ $theme-width-fullwide * .75 };
+		max-width: #{ $theme-max-width-fullwide * .75 };
 	}
 
 	.alignfull {
-		max-width: $theme-width-fullwide;
+		max-width: $theme-max-width-fullwide;
 	}
 
 	.alignwide {
 		@include break-large {
-			width: 80%;
+			width: $theme-width-wide;
 			margin-left: auto;
 			margin-right: auto;
 		}
@@ -384,7 +385,7 @@ body ::-webkit-scrollbar-thumb {
 	}
 }
 
-@media only screen and ( min-width: $theme-width-fullwide )  {
+@media only screen and ( min-width: $theme-max-width-fullwide )  {
 	.site-content .alignwide,
 	.site-content .alignfull {
 		margin-left: auto;
@@ -594,6 +595,26 @@ input[type="submit"].search-submit {
 	.wp-block-gallery:not( .alignwide ):not( .alignfull ) {
 		padding: 0;
 		max-width: $theme-width + 8px + 8px;	// compensate for gallery item margins
+	}
+
+	.wp-block-gallery.alignwide,
+	.wp-block-gallery.alignfull {
+		padding: 0;
+	}
+
+	// compensate for gallery item margins
+	.wp-block-gallery.alignwide {
+		@include break-large {
+			width: calc( #{ $theme-width-wide } + 8px + 8px );
+			max-width: calc( #{ $theme-max-width-fullwide * .75 } + 8px + 8px );
+		}
+	}
+
+	.wp-block-gallery.alignfull {
+		width: 100%;
+		max-width: calc( #{ $theme-max-width-fullwide } + 8px + 8px );
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	// To use, apply `custom-gallery` as an additional CSS class to your Gallery block under Block settings

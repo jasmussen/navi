@@ -404,6 +404,18 @@ input[type="submit"].search-submit {
 .site-content .wp-block-gallery:not(.alignwide):not(.alignfull) {
   padding: 0;
   max-width: 736px; }
+.site-content .wp-block-gallery.alignwide,
+.site-content .wp-block-gallery.alignfull {
+  padding: 0; }
+@media (min-width: 960px) {
+  .site-content .wp-block-gallery.alignwide {
+    width: calc( 80% + 8px + 8px );
+    max-width: calc( 1620px + 8px + 8px ); } }
+.site-content .wp-block-gallery.alignfull {
+  width: 100%;
+  max-width: calc( 2160px + 8px + 8px );
+  margin-left: auto;
+  margin-right: auto; }
 .site-content .custom-gallery {
   column-count: 2;
   column-gap: 0;
