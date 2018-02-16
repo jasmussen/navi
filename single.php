@@ -11,30 +11,28 @@
 
 		?>
 		<div class="navigation">
-			<div class="thumbnails">
-					<?php
-					$prevPost = get_previous_post();
-					if ( $prevPost ) {
-						global $post;
-						$post = $prevPost;
-						setup_postdata( $post );
-						$title = __( 'Previous', 'navi' );
-						include( locate_template( 'template-parts/content-thumbnail.php' ) );
-						wp_reset_postdata();
-					}
-					?>
-					<?php
-					$nextPost = get_next_post();
-					if ( $nextPost ) {
-						global $post;
-						$post = $nextPost;
-						setup_postdata( $post );
-						$title = __( 'Next', 'navi' );
-						include( locate_template( 'template-parts/content-thumbnail.php' ) );
-						wp_reset_postdata();
-					}
-					?>
-			</div>
+			<?php
+			$prevPost = get_previous_post();
+			if ( $prevPost ) {
+				global $post;
+				$post = $prevPost;
+				setup_postdata( $post );
+				$title = __( 'Previous', 'navi' );
+				include( locate_template( 'template-parts/content-thumbnail.php' ) );
+				wp_reset_postdata();
+			}
+			?>
+			<?php
+			$nextPost = get_next_post();
+			if ( $nextPost ) {
+				global $post;
+				$post = $nextPost;
+				setup_postdata( $post );
+				$title = __( 'Next', 'navi' );
+				include( locate_template( 'template-parts/content-thumbnail.php' ) );
+				wp_reset_postdata();
+			}
+			?>
 		</div>
 		<?php
 

@@ -773,15 +773,19 @@ input[type="submit"].search-submit {
 	margin-bottom: #{ $text-margin * 3 };
 	margin-left: -$text-margin-small;
 	margin-right: -$text-margin-small;
+	padding-top: $text-margin;
+	max-width: $theme-width + $text-margin + $text-margin;	// compensate for item margins
 
 	@include break-small {
-		margin-left: 0;
-		margin-right: 0;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
-	.thumbnails {
-		padding-top: $text-margin;
-		max-width: $theme-width + $text-margin + $text-margin;	// compensate for item margins
+	.thumbnail {
+		@include break-medium {
+			width: 50%;
+			float: left;
+		}
 	}
 }
 
@@ -848,8 +852,8 @@ input[type="submit"].search-submit {
  * Archive column layout
  */
 
-.thumbnails.posts {
-	margin: #{ $text-margin * 3 } auto;
+.posts {
+	margin: #{ $text-margin * 3 } auto 0 auto;
 	clear: both;
 	overflow: hidden;
 	max-width: #{ ( $theme-width * 1.5 ) + $text-margin + $text-margin };	// compensate for item margins
@@ -857,11 +861,14 @@ input[type="submit"].search-submit {
 
 
 /**
- * Thumbnail
+ * Post snippets & thumbnails
  */
 
-.thumbnail {
+.thumbnail,
+.snippet {
 	padding: 0;
+	margin-bottom: $text-margin;
+	min-height: #{ $text-margin * 6 };
 
 	@include break-medium {
 		width: 50%;
@@ -881,53 +888,53 @@ input[type="submit"].search-submit {
 		&:hover .entry-excerpt a {
 			text-decoration: underline;
 		}
+	}
 
-		.entry-thumbnail {
-			display: block;
-			min-height: 160px;
-			padding-top: 50%;
+	.entry-excerpt a {
+		text-decoration: none;
+		color: $dark-gray-900;
+	}
 
-			background-position: center center;
-			background-color: $light-gray-200;
-			background-repeat: no-repeat;
+	// Next / Previous title
+	.entry-excerpt h3 {
+		font-family: $fonts-system;
+		font-size: $fonts-small;
+		font-weight: bold;
+		margin: 0 0 1em 0;
+	}
 
-			// No thumbnail
-			background-image: url( 'assets/pattern.svg' );
-			background-size: 24px auto;
-		}
+	// Post heading
+	.entry-excerpt h4 {
+		font-size: 12.5pt;
+	}
+}
 
-		.entry-excerpt {
-			position: relative;
-			top: -2.5em;
-			background: $white;
-			display: inline-block;
-			min-height: #{ $text-margin * 3 };	// Ensure even distribution of thumbnails
+.thumbnail {
+	.entry-thumbnail {
+		display: block;
+		padding-top: 25%;
 
-			margin: 0 $text-margin-small;
-			padding: $text-margin-small $text-margin-small;
+		background-position: center center;
+		background-color: $light-gray-200;
+		background-repeat: no-repeat;
 
-			@include break-small {
-				margin: 0 $text-margin;
-				padding: $text-margin-small $text-margin;
-			}
-		}
+		// No thumbnail
+		background-image: url( 'assets/pattern.svg' );
+		background-size: 24px auto;
+	}
 
-		.entry-excerpt a {
-			text-decoration: none;
-			color: $dark-gray-900;
-		}
+	.entry-excerpt {
+		position: relative;
+		top: -2.5em;
+		background: $white;
+		display: inline-block;
 
-		// Next / Previous title
-		.entry-excerpt h3 {
-			font-family: $fonts-system;
-			font-size: $fonts-small;
-			font-weight: bold;
-			margin: 0 0 1em 0;
-		}
+		margin: 0 $text-margin-small 0 0;
+		padding: $text-margin-small $text-margin-small 0 0;
 
-		// Post heading
-		.entry-excerpt h4 {
-			font-size: 12.5pt;
+		@include break-small {
+			margin: 0 $text-margin 0 0;
+			padding: $text-margin-small $text-margin 0 0;
 		}
 	}
 
@@ -943,7 +950,7 @@ input[type="submit"].search-submit {
 			top: 0;
 			right: 0;
 			left: 0;
-			padding-top: 50%;
+			padding-top: 25%;
 		}
 
 		&:before {
@@ -1013,12 +1020,12 @@ input[type="submit"].search-submit {
 			z-index: 1;
 			background: $white;
 			color: $dark-gray-900;
-			padding: $text-margin $text-margin 0 $text-margin;
+			padding: $text-margin $text-margin 0 0;
 			max-width: $theme-width + $text-margin + $text-margin;
-			margin: 0 $text-margin-small;
+			margin: 0 $text-margin-small 0 0;
 
 			@include break-small {
-				margin: 0 $text-margin;
+				margin: 0 $text-margin 0 0;
 			}
 
 			h3 {

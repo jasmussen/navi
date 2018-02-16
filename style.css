@@ -514,14 +514,17 @@ input[type="submit"].search-submit {
   overflow: hidden;
   margin-bottom: 96px;
   margin-left: -16px;
-  margin-right: -16px; }
+  margin-right: -16px;
+  padding-top: 32px;
+  max-width: 784px; }
   @media (min-width: 600px) {
     .site-content > .navigation {
-      margin-left: 0;
-      margin-right: 0; } }
-  .site-content > .navigation .thumbnails {
-    padding-top: 32px;
-    max-width: 784px; }
+      margin-left: auto;
+      margin-right: auto; } }
+  @media (min-width: 782px) {
+    .site-content > .navigation .thumbnail {
+      width: 50%;
+      float: left; } }
 
 /**
  * Page Nagination
@@ -566,75 +569,84 @@ input[type="submit"].search-submit {
 /**
  * Archive column layout
  */
-.thumbnails.posts {
-  margin: 96px auto;
+.posts {
+  margin: 96px auto 0 auto;
   clear: both;
   overflow: hidden;
   max-width: 1144px; }
 
 /**
- * Thumbnail
+ * Post snippets & thumbnails
  */
-.thumbnail {
-  padding: 0; }
+.thumbnail,
+.snippet {
+  padding: 0;
+  margin-bottom: 32px;
+  min-height: 192px; }
   @media (min-width: 782px) {
-    .thumbnail {
+    .thumbnail,
+    .snippet {
       width: 50%;
       float: left; } }
-  .thumbnail section {
+  .thumbnail section,
+  .snippet section {
     margin: 0 16px;
     position: relative;
     break-inside: avoid;
     overflow: hidden; }
     @media (min-width: 600px) {
-      .thumbnail section {
+      .thumbnail section,
+      .snippet section {
         margin: 0 32px; } }
-    .thumbnail section:hover .entry-excerpt a {
+    .thumbnail section:hover .entry-excerpt a,
+    .snippet section:hover .entry-excerpt a {
       text-decoration: underline; }
-    .thumbnail section .entry-thumbnail {
-      display: block;
-      min-height: 160px;
-      padding-top: 50%;
-      background-position: center center;
-      background-color: #f3f4f5;
-      background-repeat: no-repeat;
-      background-image: url("assets/pattern.svg");
-      background-size: 24px auto; }
-    .thumbnail section .entry-excerpt {
-      position: relative;
-      top: -2.5em;
-      background: #fff;
-      display: inline-block;
-      min-height: 96px;
-      margin: 0 16px;
-      padding: 16px 16px; }
-      @media (min-width: 600px) {
-        .thumbnail section .entry-excerpt {
-          margin: 0 32px;
-          padding: 16px 32px; } }
-    .thumbnail section .entry-excerpt a {
-      text-decoration: none;
-      color: #191e23; }
-    .thumbnail section .entry-excerpt h3 {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
-      font-size: 13px;
-      font-weight: bold;
-      margin: 0 0 1em 0; }
-    .thumbnail section .entry-excerpt h4 {
-      font-size: 12.5pt; }
-  .thumbnail.has-post-thumbnail section .entry-thumbnail {
-    background-size: cover; }
-    .thumbnail.has-post-thumbnail section .entry-thumbnail:before {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      padding-top: 50%; }
-    .thumbnail.has-post-thumbnail section .entry-thumbnail:before {
-      background: #7e8993;
-      mix-blend-mode: color; }
+  .thumbnail .entry-excerpt a,
+  .snippet .entry-excerpt a {
+    text-decoration: none;
+    color: #191e23; }
+  .thumbnail .entry-excerpt h3,
+  .snippet .entry-excerpt h3 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0 0 1em 0; }
+  .thumbnail .entry-excerpt h4,
+  .snippet .entry-excerpt h4 {
+    font-size: 12.5pt; }
+
+.thumbnail .entry-thumbnail {
+  display: block;
+  padding-top: 25%;
+  background-position: center center;
+  background-color: #f3f4f5;
+  background-repeat: no-repeat;
+  background-image: url("assets/pattern.svg");
+  background-size: 24px auto; }
+.thumbnail .entry-excerpt {
+  position: relative;
+  top: -2.5em;
+  background: #fff;
+  display: inline-block;
+  margin: 0 16px 0 0;
+  padding: 16px 16px 0 0; }
+  @media (min-width: 600px) {
+    .thumbnail .entry-excerpt {
+      margin: 0 32px 0 0;
+      padding: 16px 32px 0 0; } }
+.thumbnail.has-post-thumbnail section .entry-thumbnail {
+  background-size: cover; }
+  .thumbnail.has-post-thumbnail section .entry-thumbnail:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding-top: 25%; }
+  .thumbnail.has-post-thumbnail section .entry-thumbnail:before {
+    background: #7e8993;
+    mix-blend-mode: color; }
 
 /**
  * Featured
@@ -680,12 +692,12 @@ input[type="submit"].search-submit {
       z-index: 1;
       background: #fff;
       color: #191e23;
-      padding: 32px 32px 0 32px;
+      padding: 32px 32px 0 0;
       max-width: 784px;
-      margin: 0 16px; }
+      margin: 0 16px 0 0; }
       @media (min-width: 600px) {
         .site-content .featured .thumbnail-featured .entry-excerpt {
-          margin: 0 32px; } }
+          margin: 0 32px 0 0; } }
       .site-content .featured .thumbnail-featured .entry-excerpt h3 {
         font-family: "Noto Serif", Georgia, serif;
         font-size: 28pt;

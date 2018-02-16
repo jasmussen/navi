@@ -23,12 +23,16 @@
 
 		// Post thumbnails
 		?>
-		<div class="posts thumbnails">
+		<div class="posts">
 		<?php
 			// If on homepage, fetch the next posts
 			while ( have_posts() ) : the_post();
 
-				get_template_part( 'template-parts/content', 'thumbnail' );
+				if ( has_post_thumbnail() ) {
+					get_template_part( 'template-parts/content', 'thumbnail' );
+				} else {
+					get_template_part( 'template-parts/content', 'snippet' );
+				}
 
 			endwhile;
 		?>
