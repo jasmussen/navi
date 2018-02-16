@@ -594,15 +594,12 @@ input[type="submit"].search-submit {
     .thumbnail section .entry-thumbnail {
       display: block;
       min-height: 160px;
+      padding-top: 50%;
       background-position: center center;
       background-color: #f3f4f5;
       background-repeat: no-repeat;
       background-image: url("assets/pattern.svg");
       background-size: 24px auto; }
-    .thumbnail section .entry-thumbnail:before {
-      content: '';
-      display: block;
-      padding-top: 50%; }
     .thumbnail section .entry-excerpt {
       position: relative;
       top: -2.5em;
@@ -627,6 +624,17 @@ input[type="submit"].search-submit {
       font-size: 12.5pt; }
   .thumbnail.has-post-thumbnail section .entry-thumbnail {
     background-size: cover; }
+    .thumbnail.has-post-thumbnail section .entry-thumbnail:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      padding-top: 50%; }
+    .thumbnail.has-post-thumbnail section .entry-thumbnail:before {
+      background: #7e8993;
+      mix-blend-mode: color; }
 
 /**
  * Featured
@@ -658,9 +666,8 @@ input[type="submit"].search-submit {
     .site-content .featured .thumbnail-featured.has-post-thumbnail .entry-thumbnail {
       background-size: cover; }
     .site-content .featured .thumbnail-featured.has-post-thumbnail:before {
-      content: '';
+      content: "";
       display: block;
-      background: rgba(0, 0, 0, 0.05);
       position: absolute;
       top: 0;
       right: 0;

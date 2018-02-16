@@ -41,6 +41,7 @@ $blue-medium-300: #66C6E4;
 $blue-medium-200: #BFE7F3;
 $blue-medium-100: #E5F5FA;
 
+// Grays
 $black: #000;
 $dark-gray-900: #191e23;
 $dark-gray-800: #23282d;
@@ -61,6 +62,13 @@ $light-gray-300: #edeff0;
 $light-gray-200: #f3f4f5;
 $light-gray-100: #f8f9f9;
 $white: #fff;
+
+// Spot colors
+$ultramarine: #366be1;
+$oceanblue: #5eccf6;
+$purple: #723f87;
+$orange: #ec3208;
+$sunyellow: #f2fa73;
 
 // Shadows
 $shadow-invisible: 0 0px 0px rgba( 0,0,0,0 );
@@ -877,6 +885,7 @@ input[type="submit"].search-submit {
 		.entry-thumbnail {
 			display: block;
 			min-height: 160px;
+			padding-top: 50%;
 
 			background-position: center center;
 			background-color: $light-gray-200;
@@ -885,12 +894,6 @@ input[type="submit"].search-submit {
 			// No thumbnail
 			background-image: url( 'assets/pattern.svg' );
 			background-size: 24px auto;
-		}
-
-		.entry-thumbnail:before {
-			content: '';
-			display: block;
-			padding-top: 50%;
 		}
 
 		.entry-excerpt {
@@ -931,6 +934,22 @@ input[type="submit"].search-submit {
 	// With thumbnail
 	&.has-post-thumbnail section .entry-thumbnail {
 		background-size: cover;
+
+		// Color filter
+		&:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			padding-top: 50%;
+		}
+
+		&:before {
+			background: $dark-gray-200;
+			mix-blend-mode: color;
+		}
 	}
 }
 
@@ -978,9 +997,8 @@ input[type="submit"].search-submit {
 		}
 
 		&.has-post-thumbnail:before {
-			content: '';
+			content: "";
 			display: block;
-			background: rgba( 0,0,0,.05 );
 			position: absolute;
 			top: 0;
 			right: 0;

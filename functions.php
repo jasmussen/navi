@@ -6,8 +6,8 @@ if ( ! function_exists( 'navitheme_setup' ) ) :
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
 
-		add_image_size( 'custom-thumbnails', 900, 450 );
-		add_image_size( 'big-thumbnails', 1620, 1120 );
+		add_image_size( 'custom-thumbnails', 1620, 720 );
+		add_image_size( 'big-thumbnails', 2160, 1080 );
 
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'navitheme' ),
