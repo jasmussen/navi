@@ -28,11 +28,7 @@
 			// If on homepage, fetch the next posts
 			while ( have_posts() ) : the_post();
 
-				if ( has_post_thumbnail() ) {
-					get_template_part( 'template-parts/content', 'thumbnail' );
-				} else {
-					get_template_part( 'template-parts/content', 'snippet' );
-				}
+				get_template_part( 'template-parts/content', 'thumbnail' );
 
 			endwhile;
 		?>

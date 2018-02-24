@@ -424,11 +424,8 @@ body ::-webkit-scrollbar-thumb {
 	right: -$text-margin;
 	padding: 0 $text-margin;
 
-	@include break-small {
-		padding: 0 $text-margin-small;
-	}
-
 	@include break-medium {
+		padding: 0 $text-margin-small;
 		left: 0;
 		top: 0;
 		right: 0;
@@ -849,6 +846,19 @@ input[type="submit"].search-submit {
 
 
 /**
+ * Post Tags
+ */
+
+.post-tags a {
+	font-size: $fonts-small;
+	font-family: $fonts-system;
+	text-decoration: none;
+	color: $dark-gray-900;
+	font-weight: bold;
+}
+
+
+/**
  * Archive column layout
  */
 
@@ -856,47 +866,45 @@ input[type="submit"].search-submit {
 	margin: #{ $text-margin * 3 } auto 0 auto;
 	clear: both;
 	overflow: hidden;
-	max-width: #{ ( $theme-width * 1.5 ) + $text-margin + $text-margin };	// compensate for item margins
+	max-width: #{ ( $theme-width * 1.5 ) };	// compensate for item margins
 }
 
 
 /**
- * Post snippets & thumbnails
+ * Post links
  */
 
-.thumbnail,
-.snippet {
+.thumbnail {
 	padding: 0;
 	margin-bottom: $text-margin;
-	min-height: #{ $text-margin * 6 };
+	min-height: #{ $text-margin * 2.5 };
 
 	@include break-medium {
 		width: 50%;
 		float: left;
 	}
 
-	section {
-		margin: 0 $text-margin-small;
-		@include break-small {
-			margin: 0 $text-margin;
-		}
-
-		position: relative;
-		break-inside: avoid;
-		overflow: hidden;
-
-		&:hover .entry-excerpt a {
-			text-decoration: underline;
-		}
-	}
-
-	.entry-excerpt a {
+	section h4 a {
 		text-decoration: none;
 		color: $dark-gray-900;
 	}
 
+	section h4 a:hover {
+		text-decoration: underline;
+	}
+
+	section {
+		position: relative;
+		break-inside: avoid;
+		overflow: hidden;
+
+		@include break-medium {
+			margin: 0 $text-margin-small 0 0;
+		}
+	}
+
 	// Next / Previous title
-	.entry-excerpt h3 {
+	section h3 {
 		font-family: $fonts-system;
 		font-size: $fonts-small;
 		font-weight: bold;
@@ -904,59 +912,8 @@ input[type="submit"].search-submit {
 	}
 
 	// Post heading
-	.entry-excerpt h4 {
+	section h4 {
 		font-size: 12.5pt;
-	}
-}
-
-.thumbnail {
-	.entry-thumbnail {
-		display: block;
-		padding-top: 25%;
-
-		background-position: center center;
-		background-color: $light-gray-200;
-		background-repeat: no-repeat;
-
-		// No thumbnail
-		background-image: url( 'assets/pattern.svg' );
-		background-size: 24px auto;
-	}
-
-	.entry-excerpt {
-		position: relative;
-		top: -2.5em;
-		background: $white;
-		display: inline-block;
-
-		margin: 0 $text-margin-small 0 0;
-		padding: $text-margin-small $text-margin-small 0 0;
-
-		@include break-small {
-			margin: 0 $text-margin 0 0;
-			padding: $text-margin-small $text-margin 0 0;
-		}
-	}
-
-	// With thumbnail
-	&.has-post-thumbnail section .entry-thumbnail {
-		background-size: cover;
-
-		// Color filter
-		&:before {
-			content: "";
-			display: block;
-			position: absolute;
-			top: 0;
-			right: 0;
-			left: 0;
-			padding-top: 25%;
-		}
-
-		&:before {
-			background: $dark-gray-200;
-			mix-blend-mode: color;
-		}
 	}
 }
 
@@ -966,11 +923,10 @@ input[type="submit"].search-submit {
  */
 
 .site-content .featured {
-	margin: 0 auto #{ $text-margin * 2 } auto;
+	margin: #{ $text-margin * 2 } auto;
 	max-width: $theme-width * 1.5;
 
 	.thumbnail-featured {
-		padding: 30% 0 0 0;
 		position: relative;
 		max-width: none;
 
@@ -980,14 +936,9 @@ input[type="submit"].search-submit {
 
 		.entry-thumbnail {
 			display: block;
-			position: absolute;
 			margin: 0;
-			max-width: none;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			z-index: 0;
+			padding-top: 40%;
+			min-height: #{ $text-margin * 6 };
 
 			background-position: center center;
 			background-color: $light-gray-200;
@@ -1017,8 +968,6 @@ input[type="submit"].search-submit {
 
 		.entry-excerpt {
 			position: relative;
-			z-index: 1;
-			background: $white;
 			color: $dark-gray-900;
 			padding: $text-margin $text-margin 0 0;
 			max-width: $theme-width + $text-margin + $text-margin;

@@ -21,15 +21,7 @@ if ( ! function_exists( 'navitheme_setup' ) ) :
 			'caption',
 		) );
 
-		add_theme_support( 'gutenberg', array(
-			'wide-images' => true,
-	   		'colors' => array(
-				'#0073aa',
-				'#229fd8',
-				'#eee',
-				'#444',
-			),
-		) );
+		add_theme_support( 'align-wide' );
 	}
 endif;
 add_action( 'after_setup_theme', 'navitheme_setup' );
