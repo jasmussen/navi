@@ -805,15 +805,10 @@ input[type="submit"].search-submit {
 .site-content > .navigation {
 	overflow: hidden;
 	margin-bottom: #{ $text-margin * 3 };
-	margin-left: -$text-margin-small;
-	margin-right: -$text-margin-small;
 	padding-top: $text-margin;
 	max-width: $theme-width;	// compensate for item margins
-
-	@include break-small {
-		margin-left: auto;
-		margin-right: auto;
-	}
+	margin-left: auto;
+	margin-right: auto;
 
 	.thumbnail {
 		@include break-medium {
@@ -926,7 +921,7 @@ input[type="submit"].search-submit {
 	padding: 0;
 	margin-bottom: $text-margin;
 	height: #{ $text-margin *
-	3.8 };
+	4.6 };
 	overflow: hidden;
 
 	@include break-medium {
@@ -993,6 +988,7 @@ input[type="submit"].search-submit {
 			// No thumbnail
 			background-image: url( 'assets/pattern.svg' );
 			background-size: 24px auto;
+			margin: 0 0 $text-margin-small 0;
 		}
 
 		// With thumbnail
@@ -1000,31 +996,28 @@ input[type="submit"].search-submit {
 			background-size: cover;
 		}
 
-		.entry-excerpt {
+		section {
 			position: relative;
 			color: $dark-gray-900;
-			padding: $text-margin $text-margin 0 0;
-			max-width: $theme-width + $text-margin + $text-margin;
-			margin: 0 $text-margin-small 0 0;
+		}
+
+		h2 {
+			margin-bottom: 0;
+			font-size: 2em;
+    		line-height: 1.4;
 
 			@include break-small {
-				margin: 0 $text-margin 0 0;
+				font-size: 3em;
 			}
+		}
 
-			h3 {
-				font-family: $fonts-serif;
-				font-size: 28pt;
-				margin-bottom: 0;
-			}
+		h2 a {
+			display: block;
+			color: $dark-gray-900;
+			text-decoration: none;
 
-			h3 a {
-				display: block;
-				color: $dark-gray-900;
-				text-decoration: none;
-
-				&:hover {
-					text-decoration: underline;
-				}
+			&:hover {
+				text-decoration: underline;
 			}
 		}
 	}

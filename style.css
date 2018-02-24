@@ -536,14 +536,10 @@ input[type="submit"].search-submit {
 .site-content > .navigation {
   overflow: hidden;
   margin-bottom: 96px;
-  margin-left: -16px;
-  margin-right: -16px;
   padding-top: 32px;
-  max-width: 720px; }
-  @media (min-width: 600px) {
-    .site-content > .navigation {
-      margin-left: auto;
-      margin-right: auto; } }
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto; }
   @media (min-width: 782px) {
     .site-content > .navigation .thumbnail {
       width: 50%;
@@ -623,7 +619,7 @@ input[type="submit"].search-submit {
 .thumbnail {
   padding: 0;
   margin-bottom: 32px;
-  height: 121.6px;
+  height: 147.2px;
   overflow: hidden; }
   @media (min-width: 782px) {
     .thumbnail {
@@ -667,28 +663,26 @@ input[type="submit"].search-submit {
       background-color: #f3f4f5;
       background-repeat: no-repeat;
       background-image: url("assets/pattern.svg");
-      background-size: 24px auto; }
+      background-size: 24px auto;
+      margin: 0 0 16px 0; }
     .site-content .featured .thumbnail-featured.has-post-thumbnail .entry-thumbnail {
       background-size: cover; }
-    .site-content .featured .thumbnail-featured .entry-excerpt {
+    .site-content .featured .thumbnail-featured section {
       position: relative;
-      color: #191e23;
-      padding: 32px 32px 0 0;
-      max-width: 784px;
-      margin: 0 16px 0 0; }
+      color: #191e23; }
+    .site-content .featured .thumbnail-featured h2 {
+      margin-bottom: 0;
+      font-size: 2em;
+      line-height: 1.4; }
       @media (min-width: 600px) {
-        .site-content .featured .thumbnail-featured .entry-excerpt {
-          margin: 0 32px 0 0; } }
-      .site-content .featured .thumbnail-featured .entry-excerpt h3 {
-        font-family: "Noto Serif", Georgia, serif;
-        font-size: 28pt;
-        margin-bottom: 0; }
-      .site-content .featured .thumbnail-featured .entry-excerpt h3 a {
-        display: block;
-        color: #191e23;
-        text-decoration: none; }
-        .site-content .featured .thumbnail-featured .entry-excerpt h3 a:hover {
-          text-decoration: underline; }
+        .site-content .featured .thumbnail-featured h2 {
+          font-size: 3em; } }
+    .site-content .featured .thumbnail-featured h2 a {
+      display: block;
+      color: #191e23;
+      text-decoration: none; }
+      .site-content .featured .thumbnail-featured h2 a:hover {
+        text-decoration: underline; }
 
 /**
  * Comments
