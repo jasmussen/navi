@@ -127,17 +127,32 @@ body ::-webkit-scrollbar-thumb {
   .site-content .alignright {
     max-width: 720px !important; }
     .site-content .alignleft > img,
-    .site-content .alignright > img {
+    .site-content .alignleft > figcaption,
+    .site-content .alignright > img,
+    .site-content .alignright > figcaption {
       max-width: 50%; }
+    .site-content .alignleft > figcaption,
+    .site-content .alignright > figcaption {
+      width: 100%;
+      margin-bottom: 1em; }
   .site-content .alignleft img {
     float: left;
     margin-right: 16px; }
   .site-content .alignright img {
     float: right;
     margin-left: 16px; }
+  .site-content .alignleft figcaption {
+    float: left;
+    clear: left;
+    margin-right: 2em; }
+  .site-content .alignright figcaption {
+    margin-left: 2em;
+    float: right;
+    clear: right; }
   .site-content .aligncenter {
     display: block;
-    margin: 0 auto; }
+    margin: 0 auto;
+    text-align: center; }
   .site-content h1.page-title {
     margin-bottom: 32px; }
   .site-content > .post,
@@ -504,6 +519,16 @@ input[type="submit"].search-submit {
   .site-content .wp-block-code code {
     background: none;
     padding: 0; }
+.site-content .wp-block-table {
+  border-collapse: collapse;
+  margin-bottom: 32px; }
+  .site-content .wp-block-table tbody {
+    width: 100%;
+    display: table; }
+  .site-content .wp-block-table td,
+  .site-content .wp-block-table th {
+    padding: 0.5em;
+    border: 1px solid currentColor; }
 
 /**
  * Post Navigation
@@ -514,7 +539,7 @@ input[type="submit"].search-submit {
   margin-left: -16px;
   margin-right: -16px;
   padding-top: 32px;
-  max-width: 784px; }
+  max-width: 720px; }
   @media (min-width: 600px) {
     .site-content > .navigation {
       margin-left: auto;

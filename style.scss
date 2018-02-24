@@ -278,8 +278,14 @@ body ::-webkit-scrollbar-thumb {
 	.alignright {
 		max-width: $theme-width !important;	// pending upstream fix
 
-	 	> img {
+	 	> img,
+		> figcaption {
 			max-width: 50%;
+		}
+
+		> figcaption {
+			width: 100%;
+			margin-bottom: 1em;
 		}
 	}
 
@@ -293,10 +299,23 @@ body ::-webkit-scrollbar-thumb {
 		margin-left: $text-margin-small;
 	}
 
+	.alignleft figcaption {
+		float: left;
+		clear: left;
+		margin-right: 2em;
+	}
+
+	.alignright figcaption {
+		margin-left: 2em;
+		float: right;
+		clear: right;
+	}
+
 	// Center
 	.aligncenter {
 		display: block;
 		margin: 0 auto;
+		text-align: center;
 	}
 
 	// Other
@@ -758,6 +777,24 @@ input[type="submit"].search-submit {
 			padding: 0;
 		}
 	}
+
+	// Tables
+	.wp-block-table {
+		border-collapse: collapse;
+
+		tbody {
+			width: 100%;
+			display: table;
+		}
+
+		td,
+		th {
+			padding: 0.5em;
+			border: 1px solid currentColor;
+		}
+
+		margin-bottom: $text-margin;
+	}
 }
 
 
@@ -771,7 +808,7 @@ input[type="submit"].search-submit {
 	margin-left: -$text-margin-small;
 	margin-right: -$text-margin-small;
 	padding-top: $text-margin;
-	max-width: $theme-width + $text-margin + $text-margin;	// compensate for item margins
+	max-width: $theme-width;	// compensate for item margins
 
 	@include break-small {
 		margin-left: auto;
