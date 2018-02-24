@@ -592,12 +592,21 @@ input[type="submit"].search-submit {
 /**
  * Post Tags
  */
+.post-tags {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 2em; }
+
 .post-tags a {
   font-size: 13px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   text-decoration: none;
   color: #191e23;
-  font-weight: bold; }
+  font-weight: bold;
+  text-transform: capitalize; }
+  .post-tags a:hover {
+    text-decoration: underline; }
 
 /**
  * Archive column layout
@@ -614,23 +623,24 @@ input[type="submit"].search-submit {
 .thumbnail {
   padding: 0;
   margin-bottom: 32px;
-  min-height: 80px; }
+  height: 121.6px;
+  overflow: hidden; }
   @media (min-width: 782px) {
     .thumbnail {
       width: 50%;
       float: left; } }
-  .thumbnail section h4 a {
-    text-decoration: none;
-    color: #191e23; }
-  .thumbnail section h4 a:hover {
-    text-decoration: underline; }
   .thumbnail section {
     position: relative;
     break-inside: avoid;
     overflow: hidden; }
     @media (min-width: 782px) {
       .thumbnail section {
-        margin: 0 16px 0 0; } }
+        margin: 0 32px 0 0; } }
+  .thumbnail section h4 a {
+    text-decoration: none;
+    color: #191e23; }
+  .thumbnail section h4 a:hover {
+    text-decoration: underline; }
   .thumbnail section h3 {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
     font-size: 13px;
@@ -648,8 +658,6 @@ input[type="submit"].search-submit {
   .site-content .featured .thumbnail-featured {
     position: relative;
     max-width: none; }
-    .site-content .featured .thumbnail-featured:hover .entry-excerpt a {
-      text-decoration: underline; }
     .site-content .featured .thumbnail-featured .entry-thumbnail {
       display: block;
       margin: 0;
@@ -662,16 +670,6 @@ input[type="submit"].search-submit {
       background-size: 24px auto; }
     .site-content .featured .thumbnail-featured.has-post-thumbnail .entry-thumbnail {
       background-size: cover; }
-    .site-content .featured .thumbnail-featured.has-post-thumbnail:before {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 1;
-      pointer-events: none; }
     .site-content .featured .thumbnail-featured .entry-excerpt {
       position: relative;
       color: #191e23;
@@ -685,10 +683,12 @@ input[type="submit"].search-submit {
         font-family: "Noto Serif", Georgia, serif;
         font-size: 28pt;
         margin-bottom: 0; }
-      .site-content .featured .thumbnail-featured .entry-excerpt a {
+      .site-content .featured .thumbnail-featured .entry-excerpt h3 a {
         display: block;
         color: #191e23;
         text-decoration: none; }
+        .site-content .featured .thumbnail-featured .entry-excerpt h3 a:hover {
+          text-decoration: underline; }
 
 /**
  * Comments

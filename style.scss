@@ -886,12 +886,23 @@ input[type="submit"].search-submit {
  * Post Tags
  */
 
+.post-tags {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 2em;
+}
 .post-tags a {
 	font-size: $fonts-small;
 	font-family: $fonts-system;
 	text-decoration: none;
 	color: $dark-gray-900;
 	font-weight: bold;
+	text-transform: capitalize;
+
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 
@@ -914,11 +925,23 @@ input[type="submit"].search-submit {
 .thumbnail {
 	padding: 0;
 	margin-bottom: $text-margin;
-	min-height: #{ $text-margin * 2.5 };
+	height: #{ $text-margin *
+	3.8 };
+	overflow: hidden;
 
 	@include break-medium {
 		width: 50%;
 		float: left;
+	}
+
+	section {
+		position: relative;
+		break-inside: avoid;
+		overflow: hidden;
+
+		@include break-medium {
+			margin: 0 $text-margin 0 0;
+		}
 	}
 
 	section h4 a {
@@ -928,16 +951,6 @@ input[type="submit"].search-submit {
 
 	section h4 a:hover {
 		text-decoration: underline;
-	}
-
-	section {
-		position: relative;
-		break-inside: avoid;
-		overflow: hidden;
-
-		@include break-medium {
-			margin: 0 $text-margin-small 0 0;
-		}
 	}
 
 	// Next / Previous title
@@ -967,10 +980,6 @@ input[type="submit"].search-submit {
 		position: relative;
 		max-width: none;
 
-		&:hover .entry-excerpt a {
-			text-decoration: underline;
-		}
-
 		.entry-thumbnail {
 			display: block;
 			margin: 0;
@@ -991,18 +1000,6 @@ input[type="submit"].search-submit {
 			background-size: cover;
 		}
 
-		&.has-post-thumbnail:before {
-			content: "";
-			display: block;
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			z-index: 1;
-			pointer-events: none;
-		}
-
 		.entry-excerpt {
 			position: relative;
 			color: $dark-gray-900;
@@ -1020,10 +1017,14 @@ input[type="submit"].search-submit {
 				margin-bottom: 0;
 			}
 
-			a {
+			h3 a {
 				display: block;
 				color: $dark-gray-900;
 				text-decoration: none;
+
+				&:hover {
+					text-decoration: underline;
+				}
 			}
 		}
 	}
