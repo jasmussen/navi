@@ -540,23 +540,25 @@ body ::-webkit-scrollbar-thumb {
  * Entry Meta
  */
 
-.entry-meta {
-	font-family: $fonts-system;
-	font-weight: 500;
-	font-size: $fonts-small;
-	color: $dark-gray-500;
-	margin: $text-margin 0;
-}
+.site-content {
+	.entry-meta {
+		font-family: $fonts-system;
+		font-size: $fonts-small;
+		color: $light-gray-900;
+		margin: $text-margin 0;
+		font-weight: 500;
+	}
 
-.entry-meta a {
-	color: $dark-gray-500;
-	text-decoration: none;
-}
+	.entry-meta a {
+		font-weight: 500;
+		color: $light-gray-900;
+		text-decoration: none;
+	}
 
-.entry-meta a:hover {
-	text-decoration: underline;
+	.entry-meta a:hover {
+		text-decoration: underline;
+	}
 }
-
 
 /**
  * Form widgets
@@ -703,6 +705,8 @@ input[type="submit"].search-submit {
 	// Quotes
 	blockquote:not( .wp-block-pullquote ),
 	.wp-block-quote {
+		margin-left: 0;
+
 		cite,
 		footer {
 			color: $dark-gray-300;
@@ -804,8 +808,8 @@ input[type="submit"].search-submit {
 
 .site-content > .navigation {
 	overflow: hidden;
-	margin-bottom: #{ $text-margin * 3 };
-	padding-top: $text-margin;
+	margin-bottom: #{ $text-margin * 4 };
+	padding-top: #{ $text-margin * 2 };
 	max-width: $theme-width;	// compensate for item margins
 	margin-left: auto;
 	margin-right: auto;
@@ -1125,6 +1129,10 @@ input[type="submit"].search-submit {
 
 	.form-submit {
 		text-align: right;
+	}
+
+	.no-comments {
+		display: none;
 	}
 }
 

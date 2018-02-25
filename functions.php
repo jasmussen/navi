@@ -6,9 +6,6 @@ if ( ! function_exists( 'navitheme_setup' ) ) :
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
 
-		add_image_size( 'custom-thumbnails', 1620, 720 );
-		add_image_size( 'big-thumbnails', 2160, 1080 );
-
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'navitheme' ),
 		) );
@@ -21,7 +18,14 @@ if ( ! function_exists( 'navitheme_setup' ) ) :
 			'caption',
 		) );
 
+		// Support wide images in the editor
 		add_theme_support( 'align-wide' );
+
+		// Increase JPEG quality from the default 82
+		add_filter( 'jpeg_quality', function( $arg ) { return 90; } );
+
+		add_image_size( 'custom-thumbnails', 1620, 720 );
+		add_image_size( 'big-thumbnails', 2160, 1080 );
 	}
 endif;
 add_action( 'after_setup_theme', 'navitheme_setup' );
