@@ -123,6 +123,7 @@ endif;
 if ( function_exists( 'register_sidebar' ) )
 	register_sidebar( array(
 		'name' => 'Index, Above',
+		'id' => 'index-above',
 		'before_widget' => '<div class="widget">',
 		'after_widget' => '</div>',
 		'before_title' => '<h2>',
@@ -133,6 +134,7 @@ if ( function_exists( 'register_sidebar' ) )
 if ( function_exists( 'register_sidebar' ) )
 	register_sidebar( array(
 		'name' => 'Index, Below',
+		'id' => 'index-below',
 		'before_widget' => '<div class="widget">',
 		'after_widget' => '</div>',
 		'before_title' => '<h2>',
