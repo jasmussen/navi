@@ -125,15 +125,12 @@ body ::-webkit-scrollbar-thumb {
     margin-left: 16px; }
   .site-content .alignleft,
   .site-content .alignright {
-    max-width: 720px !important; }
-    .site-content .alignleft > img,
-    .site-content .alignleft > figcaption,
-    .site-content .alignright > img,
-    .site-content .alignright > figcaption {
-      max-width: 50%; }
+    max-width: 720px;
+    width: 100%; }
     .site-content .alignleft > figcaption,
     .site-content .alignright > figcaption {
-      width: 100%;
+      width: fit-content;
+      max-width: 50%;
       margin-bottom: 1em; }
   .site-content .alignleft img {
     float: left;

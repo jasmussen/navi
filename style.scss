@@ -276,15 +276,12 @@ body ::-webkit-scrollbar-thumb {
 	// New floats
 	.alignleft,
 	.alignright {
-		max-width: $theme-width !important;	// pending upstream fix
+		max-width: $theme-width;
+		width: 100%;
 
-	 	> img,
 		> figcaption {
+			width: fit-content;
 			max-width: 50%;
-		}
-
-		> figcaption {
-			width: 100%;
 			margin-bottom: 1em;
 		}
 	}
