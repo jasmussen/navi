@@ -263,49 +263,33 @@ body ::-webkit-scrollbar-thumb {
 	}
 
 	// Legacy floats
-	img.alignleft {
+	.alignleft {
 		float: left;
 		margin-right: $text-margin-small;
 	}
 
-	img.alignright {
+	.alignright {
 		float: right;
 		margin-left: $text-margin-small;
 	}
 
 	// New floats
-	.alignleft,
-	.alignright {
-		max-width: $theme-width;
-		width: 100%;
-
+	.wp-block-image .alignleft,
+	.wp-block-image .alignright {
 		> figcaption {
 			width: fit-content;
-			max-width: 50%;
 			margin-bottom: 1em;
 		}
 	}
 
-	.alignleft img {
+	.wp-block-image .alignleft {
 		float: left;
 		margin-right: $text-margin-small;
 	}
 
-	.alignright img {
+	.wp-block-image .alignright {
 		float: right;
 		margin-left: $text-margin-small;
-	}
-
-	.alignleft figcaption {
-		float: left;
-		clear: left;
-		margin-right: 2em;
-	}
-
-	.alignright figcaption {
-		margin-left: 2em;
-		float: right;
-		clear: right;
 	}
 
 	// Center

@@ -117,35 +117,22 @@ body ::-webkit-scrollbar-thumb {
       width: 80%;
       margin-left: auto;
       margin-right: auto; } }
-  .site-content img.alignleft {
+  .site-content .alignleft {
     float: left;
     margin-right: 16px; }
-  .site-content img.alignright {
-    float: right;
-    margin-left: 16px; }
-  .site-content .alignleft,
   .site-content .alignright {
-    max-width: 720px;
-    width: 100%; }
-    .site-content .alignleft > figcaption,
-    .site-content .alignright > figcaption {
-      width: fit-content;
-      max-width: 50%;
-      margin-bottom: 1em; }
-  .site-content .alignleft img {
-    float: left;
-    margin-right: 16px; }
-  .site-content .alignright img {
     float: right;
     margin-left: 16px; }
-  .site-content .alignleft figcaption {
+  .site-content .wp-block-image .alignleft > figcaption,
+  .site-content .wp-block-image .alignright > figcaption {
+    width: fit-content;
+    margin-bottom: 1em; }
+  .site-content .wp-block-image .alignleft {
     float: left;
-    clear: left;
-    margin-right: 2em; }
-  .site-content .alignright figcaption {
-    margin-left: 2em;
+    margin-right: 16px; }
+  .site-content .wp-block-image .alignright {
     float: right;
-    clear: right; }
+    margin-left: 16px; }
   .site-content .aligncenter {
     display: block;
     margin: 0 auto;
