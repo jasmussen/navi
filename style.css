@@ -125,7 +125,6 @@ body ::-webkit-scrollbar-thumb {
     margin-left: 16px; }
   .site-content .wp-block-image .alignleft > figcaption,
   .site-content .wp-block-image .alignright > figcaption {
-    width: fit-content;
     margin-bottom: 1em; }
   .site-content .wp-block-image .alignleft {
     float: left;
