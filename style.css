@@ -132,10 +132,6 @@ body ::-webkit-scrollbar-thumb {
   .site-content .wp-block-image .alignright {
     float: right;
     margin-left: 16px; }
-  .site-content .aligncenter {
-    display: block;
-    margin: 0 auto;
-    text-align: center; }
   .site-content h1.page-title {
     margin-bottom: 32px; }
   .site-content > .post,

@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA;;GAEG;AAEF,0BAA2B;EACxB,gBAAgB,EAAE,IAAI",
+"mappings": "AAAA;;GAEG;AAEH,0BAA2B;EAC1B,gBAAgB,EAAE,IAAI",
 "sources": ["style-editor.scss"],
 "names": [],
 "file": "style-editor.css"
