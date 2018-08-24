@@ -166,3 +166,11 @@ function navi_gutenberg_styles() {
 	 wp_enqueue_style( 'navi-gutenberg', get_theme_file_uri( '/style-editor.css' ), false, '1.0', 'all' );
 }
 add_action( 'enqueue_block_editor_assets', 'navi_gutenberg_styles' );
+
+
+/**
+ * Opt into Gutenberg opinionated theme styles
+ */
+
+ add_theme_support( 'wp-block-styles' );
+ 
